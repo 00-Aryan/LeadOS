@@ -1,0 +1,4 @@
+business_name,category,city,state,phone,website,rating,review_count,address,source_url
+Ranchi Dental Care,Dentist,Ranchi,Jharkhand,+91-9876543210,https://example-dental.com,4.5,128,"Main Road, Ranchi",https://maps.example/source-1
+Healthy Smile Clinic,Dentist,Ranchi,Jharkhand,+91-9876500000,,4.2,86,"Lalpur, Ranchi",https://maps.example/source-2
+CarePlus Clinic,Clinic,Ranchi,Jharkhand,+91-9876511111,https://example-clinic.com,4.0,54,"Hinoo, Ranchi",https://maps.example/source-3
