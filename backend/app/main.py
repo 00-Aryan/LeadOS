@@ -3,6 +3,7 @@
 from fastapi import FastAPI
 
 from app.routers.leads import router as leads_router
+from app.routers.scoring import router as scoring_router
 
 app = FastAPI(
     title="LeadOS API",
@@ -11,6 +12,7 @@ app = FastAPI(
 )
 
 app.include_router(leads_router)
+app.include_router(scoring_router)
 
 
 @app.get("/health")
