@@ -36,7 +36,13 @@ class LeadImportService:
                 invalid_records=1,
                 duplicate_records=0,
                 imported_ids=[],
-                errors=[LeadImportErrorItem(row_number=0, reasons=["CSV header is missing"], raw_row={})],
+                errors=[
+                    LeadImportErrorItem(
+                        row_number=0,
+                        reasons=["CSV header is missing"],
+                        raw_row={},
+                    )
+                ],
             )
 
         total = 0
