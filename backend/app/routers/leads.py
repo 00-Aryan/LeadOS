@@ -1,21 +1,40 @@
-"""Lead import API routes."""
+"""Lead import and listing API routes."""
 
-from fastapi import APIRouter
-from pydantic import BaseModel
+from fastapi import APIRouter, Depends
+from pydantic import BaseModel, Field
+from sqlalchemy.orm import Session
 
-from app.schemas.lead import LeadImportSummary
-from app.services.lead_import_service import import_leads_from_csv
+from app.database import get_db_session
+from app.repositories import LeadRepository
+from app.schemas.lead import LeadImportSummary, LeadOutput
+from app.services.lead_import_service import LeadImportService
 
 router = APIRouter(prefix="/leads", tags=["leads"])
 
 
 class LeadImportRequest(BaseModel):
-    """Request body for CSV import."""
+    """Request body for importing CSV lead data."""
 
-    csv_content: str
+    csv_content: str = Field(min_length=1)
+    source_name: str | None = None
 
 
 @router.post("/import", response_model=LeadImportSummary)
-def import_leads(request: LeadImportRequest) -> LeadImportSummary:
-    """Validate CSV lead data and return an import summary."""
-    return import_leads_from_csv(request.csv_content)
+def import_leads(
+    request: LeadImportRequest,
+    db: Session = Depends(get_db_session),
+) -> LeadImportSummary:
+    """Validate, transform and persist leads from CSV content."""
+    service = LeadImportService()
+    return service.import_csv_text(db, request.csv_content, source_name=request.source_name)
+
+
+@router.get("", response_model=list[LeadOutput])
+def list_leads(
+    limit: int = 100,
+    offset: int = 0,
+    db: Session = Depends(get_db_session),
+) -> list[LeadOutput]:
+    """Return persisted leads."""
+    repository = LeadRepository()
+    return list(repository.list_leads(db, limit=limit, offset=offset))
