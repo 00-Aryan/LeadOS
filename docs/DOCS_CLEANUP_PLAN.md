@@ -10,6 +10,10 @@ This plan does not perform cleanup. It defines what should be updated, labeled, 
 
 Historical/status labels were added to the highest-risk stale docs. This reduces agent confusion, but it does not fully reconcile backlog statuses, merge duplicate docs, or archive historical material.
 
+## TASK-0006 Progress
+
+`docs/ACTIVE_TASKS.md` was created as the canonical active task source. Historical backlog, sprint review, and fix-log docs should remain references unless a task is promoted into the active index.
+
 ## Current Documentation Risk Summary
 
 - Stale implementation state: older backlog and sprint docs still describe pending work that appears partially or fully implemented.
@@ -58,7 +62,7 @@ Historical/status labels were added to the highest-risk stale docs. This reduces
 | Data model | `docs/DATA_MODEL.md` | Must be kept aligned with `backend/app/models/` and future migrations. |
 | Task execution | `docs/WORKFLOW.md` and `docs/DONE_CRITERIA.md` | Controls how agents plan, implement, validate, and report work. |
 | Risks | `docs/RISK_REGISTER.md` | Source of truth for known risks and future mitigations. |
-| Sprint state | `docs/CHANGELOG_AGENT.md` until a canonical active task index exists | Sprint reviews and fix logs should become historical references. |
+| Sprint state | `docs/ACTIVE_TASKS.md` and `docs/CHANGELOG_AGENT.md` | Active work belongs in `docs/ACTIVE_TASKS.md`; current validation/state belongs in `docs/CHANGELOG_AGENT.md`; sprint reviews and fix logs are historical references. |
 
 ## Files Recommended for Immediate Update
 
@@ -179,14 +183,16 @@ Historical/status labels were added to the highest-risk stale docs. This reduces
 
 ## Proposed Cleanup Order
 
-1. Reconcile `docs/TASKS.md` against current source, tests, and verified PR #1 Backend CI.
-2. Create a canonical active task index if `docs/TASKS.md` remains too broad for execution planning.
-3. Clarify current tooling in `docs/STACK.md` without changing CI or dependencies.
-4. Reconcile `docs/DATA_MODEL.md` against ORM models before migration/reporting/scoring persistence work.
-5. Mark remaining review artifacts as historical where needed, including `docs/COUNCIL_REVIEW_001.md`.
-6. Update `docs/CONTEXT_INDEX.md` to identify historical files and point future agents to canonical active sources.
-7. Update `docs/DOCS_INVENTORY.md` after cleanup so it reflects new labels and any archive decisions.
-8. Archive obsolete notes under `docs/archive/` after PR merge if the team wants a cleaner top-level docs folder.
+1. Add `docs/LOCAL_ENVIRONMENT.md` so local Python 3.12/dependency setup is reproducible.
+2. Add `docs/CI_TROUBLESHOOTING.md` for format, lint, test, and GitHub Actions failures.
+3. Add a PR checklist or template for validation, manual work, and scope controls.
+4. Reconcile `docs/TASKS.md` against current source, tests, verified PR #1 Backend CI, and `docs/ACTIVE_TASKS.md`.
+5. Clarify current tooling in `docs/STACK.md` without changing CI or dependencies.
+6. Reconcile `docs/DATA_MODEL.md` against ORM models before migration/reporting/scoring persistence work.
+7. Mark remaining review artifacts as historical where needed, including `docs/COUNCIL_REVIEW_001.md`.
+8. Update `docs/CONTEXT_INDEX.md` to identify historical files and point future agents to canonical active sources.
+9. Update `docs/DOCS_INVENTORY.md` after cleanup so it reflects new labels and any archive decisions.
+10. Archive obsolete notes under `docs/archive/` after PR merge if the team wants a cleaner top-level docs folder.
 
 ## Manual Work Required
 
@@ -214,4 +220,4 @@ The largest operational risk is that an agent reads `docs/TASKS.md`, `docs/GITHU
 
 ## Next Recommended Task
 
-Create or reconcile a canonical active task index so future agents have one current source for executable work instead of relying on historical backlog and sprint notes.
+TASK-0007: Add local environment setup doc.

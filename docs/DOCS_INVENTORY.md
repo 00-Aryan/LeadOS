@@ -11,6 +11,10 @@
 
 Historical/status labels were added to the highest-risk stale docs: `docs/TASKS.md`, `docs/GITHUB_ISSUES_TO_CREATE.md`, `docs/TOOLING_NOTES.md`, `docs/AUTOMATION_NOTE.md`, `docs/FIX_LOG.md`, `docs/SPRINT_1_REVIEW.md`, and `docs/SPRINT_2_REVIEW.md`.
 
+## TASK-0006 Active Task Index Update
+
+`docs/ACTIVE_TASKS.md` now exists as the canonical active task source. Historical task, sprint, and fix-log docs are references only.
+
 ## Executive Summary
 
 LeadOS has a strong documentation base for product boundaries, rubrics, backend validation, and AI-agent execution. The new agent operating layer is useful and should be treated as the primary control layer for future Codex sessions.
@@ -24,6 +28,7 @@ The main risk is not missing documentation, but document drift. Several older sp
 | `AGENTS.md` | Main operating instructions for AI coding agents. | Current, canonical. | P0 | Controls task workflow, hard constraints, validation, and final report format. |
 | `README.md` | Top-level project identity and initial build principle. | Current, useful. | P1 | Good product boundary summary. |
 | `docs/CONTEXT_INDEX.md` | Map of important files and when to read them. | Current, canonical. | P0 | Should be read immediately after `AGENTS.md`. |
+| `docs/ACTIVE_TASKS.md` | Canonical active task index. | Current, canonical. | P0 | Use this as the active source for executable work before reading historical task/backlog files. |
 | `docs/WORKFLOW.md` | Standard agent planning, implementation, validation, failure, and reporting loop. | Current, canonical. | P0 | Reinforces CI/test failures blocking feature work. |
 | `docs/DONE_CRITERIA.md` | Definition of done for tasks. | Current, canonical. | P0 | Prevents false completion when validation fails. |
 | `docs/VALIDATION_COMMANDS.md` | Backend and docs validation commands. | Current, canonical. | P0 | Needs local environment caveat from `docs/MANUAL_ACTIONS.md`. |
@@ -191,17 +196,18 @@ The main risk is not missing documentation, but document drift. Several older sp
 
 1. `AGENTS.md`
 2. `docs/CONTEXT_INDEX.md`
-3. `docs/CHANGELOG_AGENT.md`
-4. `docs/MANUAL_ACTIONS.md`
-5. `docs/WORKFLOW.md`
-6. `docs/DONE_CRITERIA.md`
-7. Assigned issue/task
-8. `docs/DECISIONS.md`
-9. Relevant product/scope docs: `README.md`, `docs/PRODUCT_SPEC.md`, `docs/MVP_SCOPE.md`
-10. Relevant domain docs: audit, scoring, outreach, evaluation, data, architecture, or security docs as applicable
-11. Relevant source files and tests
-12. `docs/RISK_REGISTER.md` before final planning for risky areas
-13. `docs/VALIDATION_COMMANDS.md` before running checks
+3. `docs/ACTIVE_TASKS.md`
+4. `docs/CHANGELOG_AGENT.md`
+5. `docs/MANUAL_ACTIONS.md`
+6. `docs/WORKFLOW.md`
+7. `docs/DONE_CRITERIA.md`
+8. Assigned issue/task
+9. `docs/DECISIONS.md`
+10. Relevant product/scope docs: `README.md`, `docs/PRODUCT_SPEC.md`, `docs/MVP_SCOPE.md`
+11. Relevant domain docs: audit, scoring, outreach, evaluation, data, architecture, or security docs as applicable
+12. Relevant source files and tests
+13. `docs/RISK_REGISTER.md` before final planning for risky areas
+14. `docs/VALIDATION_COMMANDS.md` before running checks
 
 ## Manual Work Required
 

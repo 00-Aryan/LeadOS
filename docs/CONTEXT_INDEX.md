@@ -6,12 +6,18 @@ Use this file to decide what to read before editing. Read narrowly, but always r
 
 Some documents are retained for traceability and may not represent current implementation state. Future agents must treat files marked historical as references only and must check `docs/CHANGELOG_AGENT.md` before acting on them.
 
+## Active Task Source
+
+- `docs/ACTIVE_TASKS.md`: Canonical active task index for current executable work.
+- Historical task and backlog files such as `docs/TASKS.md`, `docs/GITHUB_ISSUES_TO_CREATE.md`, `docs/FIX_LOG.md`, `docs/SPRINT_1_REVIEW.md`, and `docs/SPRINT_2_REVIEW.md` are references only. Do not execute tasks from them without checking `docs/ACTIVE_TASKS.md` first.
+
 ## Product Context
 
 - `README.md`: Project identity, standalone boundary, initial build principle, and deferred areas.
 - `docs/PRODUCT_SPEC.md`: Product thesis, target user, MVP modules, non-goals, and quality bar.
 - `docs/MVP_SCOPE.md`: In-scope and out-of-scope MVP capabilities.
-- `docs/TASKS.md`: Backlog, task IDs, phase structure, and current task language.
+- `docs/ACTIVE_TASKS.md`: Canonical active task index.
+- `docs/TASKS.md`: Historical backlog, task IDs, and phase structure.
 
 ## Architecture Context
 

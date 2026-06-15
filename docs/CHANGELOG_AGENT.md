@@ -15,3 +15,7 @@ Do not claim CI passes unless the relevant GitHub Actions run has been verified.
 ## TASK-0005 Documentation Safety Labels
 
 Added historical/status labels to highest-risk stale docs so future agents do not treat old backlog, tooling, sprint, or fix-log notes as current instructions.
+
+## TASK-0006 Canonical Active Task Index
+
+Created `docs/ACTIVE_TASKS.md` as the canonical active task source. Historical backlog, sprint review, and fix-log docs remain references only.

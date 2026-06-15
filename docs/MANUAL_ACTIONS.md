@@ -4,6 +4,8 @@
 
 None, unless a newer commit is pushed and CI has not yet completed.
 
+For current task sequencing and manual-work blockers, use `docs/ACTIVE_TASKS.md`.
+
 ## Required Before Merge
 
 GitHub Actions Backend CI must be green for the latest PR head commit.
