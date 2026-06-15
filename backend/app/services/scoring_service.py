@@ -33,7 +33,12 @@ def score_lead(lead: LeadInput, audit: WebsiteAuditResult | None = None) -> Lead
     risk_flags: list[str] = []
     missing_data: list[str] = []
 
-    business_strength = _score_business_strength(lead, positive_signals, risk_flags, missing_data)
+    business_strength = _score_business_strength(
+        lead,
+        positive_signals,
+        risk_flags,
+        missing_data,
+    )
     digital_gap = _score_digital_gap(audit, positive_signals, risk_flags, missing_data)
     contactability = _score_contactability(lead, audit, positive_signals, missing_data)
     commercial_fit = _score_commercial_fit(lead, positive_signals, risk_flags)
@@ -53,15 +58,26 @@ def score_lead(lead: LeadInput, audit: WebsiteAuditResult | None = None) -> Lead
         outreach_priority=outreach_priority,
     )
     total_score = sum(category_scores.model_dump().values())
-    confidence_level = _confidence_level(missing_data=missing_data, risk_flags=risk_flags)
-    priority_label = _priority_label(total_score=total_score, confidence_level=confidence_level)
+    confidence_level = _confidence_level(
+        missing_data=missing_data,
+        risk_flags=risk_flags,
+    )
+    priority_label = _priority_label(
+        total_score=total_score,
+        confidence_level=confidence_level,
+    )
 
     return LeadScoreResult(
         total_score=total_score,
         category_scores=category_scores,
         priority_label=priority_label,
         confidence_level=confidence_level,
-        reason_summary=_build_reason_summary(total_score, priority_label, positive_signals, risk_flags),
+        reason_summary=_build_reason_summary(
+            total_score,
+            priority_label,
+            positive_signals,
+            risk_flags,
+        ),
         positive_signals=positive_signals,
         risk_flags=risk_flags,
         missing_data=missing_data,
@@ -188,7 +204,10 @@ def _score_contactability(
         checks = {check.name: check.status for check in audit.checks}
         if checks.get("contact_signal_detected") == "true":
             score += 3
-        if checks.get("whatsapp_detected") == "true" or checks.get("phone_detected") == "true":
+        if (
+            checks.get("whatsapp_detected") == "true"
+            or checks.get("phone_detected") == "true"
+        ):
             score += 2
 
     return min(score, 20)
