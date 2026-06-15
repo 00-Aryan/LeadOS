@@ -93,8 +93,11 @@ def test_import_csv_rejects_missing_required_field_header(db_session) -> None:
 def test_import_csv_rejects_blank_required_field(db_session) -> None:
     result = LeadImportService().import_csv_text(
         db_session,
-        CSV_HEADER + "Healthy Smile Clinic,Dentist,  ,Jharkhand,+91,https://example.com,"
-        "4.6,150,Main Road,source\n",
+        (
+            CSV_HEADER
+            + "Healthy Smile Clinic,Dentist,  ,Jharkhand,+91,https://example.com,"
+            "4.6,150,Main Road,source\n"
+        ),
     )
 
     assert result.summary.invalid_rows == 1
@@ -195,7 +198,12 @@ def test_import_csv_detects_duplicates_with_normalized_keys(db_session) -> None:
 def test_import_csv_ignores_unknown_optional_fields(db_session) -> None:
     result = LeadImportService().import_csv_text(
         db_session,
-        CSV_HEADER.removesuffix("\n") + ",unknown_field\n" + VALID_ROW.rstrip("\n") + ",ignored\n",
+        (
+            CSV_HEADER.removesuffix("\n")
+            + ",unknown_field\n"
+            + VALID_ROW.rstrip("\n")
+            + ",ignored\n"
+        ),
     )
 
     assert result.summary.valid_rows == 1

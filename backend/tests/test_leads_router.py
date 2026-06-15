@@ -47,7 +47,10 @@ def test_lead_import_route_returns_partial_import_result(client) -> None:
     assert payload["summary"]["valid_rows"] == 1
     assert payload["summary"]["invalid_rows"] == 1
     assert payload["invalid_rows"][0]["row_number"] == 3
-    assert "website must start with http:// or https://" in payload["invalid_rows"][0]["reasons"]
+    assert (
+        "website must start with http:// or https://"
+        in payload["invalid_rows"][0]["reasons"]
+    )
 
 
 def test_lead_import_route_rejects_non_csv_upload(client) -> None:
@@ -57,7 +60,10 @@ def test_lead_import_route_rejects_non_csv_upload(client) -> None:
     )
 
     assert response.status_code == 400
-    assert response.json()["detail"] == "Uploaded lead import file must use a .csv filename."
+    assert (
+        response.json()["detail"]
+        == "Uploaded lead import file must use a .csv filename."
+    )
 
 
 def test_lead_import_route_rejects_invalid_json_payload(client) -> None:
