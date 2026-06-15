@@ -1,5 +1,7 @@
 """Lead import and listing API routes."""
 
+from typing import Annotated
+
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
@@ -22,7 +24,7 @@ class LeadImportRequest(BaseModel):
 @router.post("/import", response_model=LeadImportSummary)
 def import_leads(
     request: LeadImportRequest,
-    db: Session = Depends(get_db_session),
+    db: Annotated[Session, Depends(get_db_session)],
 ) -> LeadImportSummary:
     """Validate, transform and persist leads from CSV content."""
     service = LeadImportService()
@@ -35,9 +37,9 @@ def import_leads(
 
 @router.get("", response_model=list[LeadOutput])
 def list_leads(
+    db: Annotated[Session, Depends(get_db_session)],
     limit: int = 100,
     offset: int = 0,
-    db: Session = Depends(get_db_session),
 ) -> list[LeadOutput]:
     """Return persisted leads."""
     repository = LeadRepository()

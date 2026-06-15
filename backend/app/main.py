@@ -20,8 +20,7 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
 app = FastAPI(
     title="LeadOS API",
     description=(
-        "Standalone lead intelligence API for import, audit, scoring, "
-        "outreach, and evaluation."
+        "Standalone lead intelligence API for import, audit, scoring, outreach, and evaluation."
     ),
     version="0.1.0",
     lifespan=lifespan,

@@ -22,17 +22,11 @@ class Lead(Base):
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
     business_name: Mapped[str] = mapped_column(String(255), nullable=False, index=True)
-    normalized_business_name: Mapped[str] = mapped_column(
-        String(255), nullable=False, index=True
-    )
+    normalized_business_name: Mapped[str] = mapped_column(String(255), nullable=False, index=True)
     category: Mapped[str] = mapped_column(String(100), nullable=False, index=True)
-    normalized_category: Mapped[str] = mapped_column(
-        String(100), nullable=False, index=True
-    )
+    normalized_category: Mapped[str] = mapped_column(String(100), nullable=False, index=True)
     city: Mapped[str] = mapped_column(String(100), nullable=False, index=True)
-    normalized_city: Mapped[str] = mapped_column(
-        String(100), nullable=False, index=True
-    )
+    normalized_city: Mapped[str] = mapped_column(String(100), nullable=False, index=True)
     state: Mapped[str | None] = mapped_column(String(100), nullable=True, index=True)
     phone: Mapped[str | None] = mapped_column(String(50), nullable=True)
     website: Mapped[str | None] = mapped_column(String(500), nullable=True)

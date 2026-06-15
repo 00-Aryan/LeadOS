@@ -204,10 +204,7 @@ def _score_contactability(
         checks = {check.name: check.status for check in audit.checks}
         if checks.get("contact_signal_detected") == "true":
             score += 3
-        if (
-            checks.get("whatsapp_detected") == "true"
-            or checks.get("phone_detected") == "true"
-        ):
+        if checks.get("whatsapp_detected") == "true" or checks.get("phone_detected") == "true":
             score += 2
 
     return min(score, 20)

@@ -162,16 +162,9 @@ def _validate_fetch_url(url: str) -> str | None:
     except ValueError:
         return None
 
-    if (
-        ip.is_private
-        or ip.is_loopback
-        or ip.is_link_local
-        or ip.is_multicast
-        or ip.is_reserved
-    ):
+    if ip.is_private or ip.is_loopback or ip.is_link_local or ip.is_multicast or ip.is_reserved:
         return (
-            "Direct requests to private, local, link-local, multicast, "
-            "or reserved IPs are blocked."
+            "Direct requests to private, local, link-local, multicast, or reserved IPs are blocked."
         )
     return None
 
