@@ -10,10 +10,10 @@ Historical files such as `docs/TASKS.md`, `docs/GITHUB_ISSUES_TO_CREATE.md`, `do
 
 - PR: #1
 - Branch: phase-0-product-foundation
-- Latest verified CI: Backend CI passed at commit `eda102a7286e00acb6d874411e238245c1a1c65c`, run #54 / 27545766287
+- Latest verified CI: Backend CI passed at commit `59e999b4135e393a1bb3768a11fe8ba79c18791e`, run #60 / 27554650321
 - Local validation caveat: local tests may fail to run on machines without Python 3.12 and backend dependencies; GitHub Actions is current PR validation source of truth.
-- Latest local HEAD: `2b1645c70674c530f8af462c2a180bc32baa2ac5`
-- Current-head CI status: GitHub Actions could not be inspected locally. User must verify PR #1 Backend CI manually. Do not begin feature work until Backend CI is verified passing for the latest PR head.
+- Latest local HEAD: `59e999b4135e393a1bb3768a11fe8ba79c18791e`
+- Current-head CI status: Latest PR head Backend CI is verified passing.
 
 ## Current Operating Rule
 
@@ -25,19 +25,19 @@ No feature work should begin unless the latest PR head has passing Backend CI or
 |---|---|---|---|---|---|
 | TASK-0006 | Create canonical active task index | Documentation/workflow | Complete pending review | User-assigned task | Created this file and updated allowed operating docs only. |
 | TASK-0006A | Reconcile active task index after TASK-0006 push | Documentation/state reconciliation | Complete pending manual CI verification | User-assigned task | GitHub CLI could not inspect CI from this environment; manual PR #1 Backend CI verification is required. |
+| TASK-0007 | Add local environment setup doc | Documentation/workflow | Complete pending review | User-assigned task | Created `docs/LOCAL_ENVIRONMENT.md` and updated allowed operating docs only. |
 
 ## Blocked / Waiting
 
 | ID | Task | Blocker | Required Action | Notes |
 |---|---|---|---|---|
 | WAIT-0001 | Full local backend test validation | Local Python 3.12 / pytest environment not fully provisioned | Use GitHub Actions as PR validation source or provision local Python 3.12 dependencies | Do not claim local tests pass unless they are actually run. |
-| WAIT-0002 | Latest-head CI verification | Local HEAD `2b1645c70674c530f8af462c2a180bc32baa2ac5` is newer than the last verified CI commit | Re-verify GitHub Actions for PR #1 Backend CI manually | Last verified run is PR #1 Backend CI run #54 at `eda102a7286e00acb6d874411e238245c1a1c65c`; `gh` could not connect locally. |
+| WAIT-0002 | Latest-head CI verification | Resolved for current HEAD `59e999b4135e393a1bb3768a11fe8ba79c18791e` | Re-verify GitHub Actions if a newer commit is pushed | Latest verified run is PR #1 Backend CI run #60 at `59e999b4135e393a1bb3768a11fe8ba79c18791e`. |
 
 ## Next Up
 
 | ID | Task | Type | Why Next | Acceptance Criteria |
 |---|---|---|---|---|
-| TASK-0007 | Add local environment setup doc | Documentation/workflow | Local backend tests may fail without Python 3.12 and dependencies; agents need a reproducible setup path. | Do not start until latest PR head Backend CI is verified passing. `docs/LOCAL_ENVIRONMENT.md` exists and explains Python 3.12, dependency install, Ruff availability, pytest, and known pyenv caveats. |
 | TASK-0008 | Add CI troubleshooting doc | Documentation/workflow | Agents need one place for format, lint, test, and GitHub Actions failure handling. | `docs/CI_TROUBLESHOOTING.md` exists and links to Makefile, workflow, validation commands, and manual verification steps. |
 | TASK-0009 | Add PR checklist | Documentation/workflow | PRs need a repeatable scope, validation, and manual-work gate. | PR checklist or template exists and covers validation, docs, risks, manual work, and no-scope-drift checks. |
 | TASK-0010 | Reconcile active implementation backlog against GitHub issues | Documentation/workflow | Historical backlog files are labeled but not reconciled into an executable implementation queue. | Active implementation tasks are aligned with GitHub issues/current PR state; historical docs remain references only. |

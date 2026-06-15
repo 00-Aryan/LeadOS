@@ -2,6 +2,8 @@
 
 Run commands from the repository root unless the command changes directories.
 
+For local Python setup, dependency installation, and common environment failures, read `docs/LOCAL_ENVIRONMENT.md`.
+
 ## Backend Setup
 
 ```bash

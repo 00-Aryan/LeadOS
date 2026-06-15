@@ -16,12 +16,16 @@ Historical/status labels were added to the highest-risk stale docs. This reduces
 
 ## TASK-0006A Progress
 
-CI state reconciliation was attempted after the TASK-0006 push, but GitHub Actions could not be inspected from this environment. PR #1 Backend CI must be manually verified for latest local HEAD `2b1645c70674c530f8af462c2a180bc32baa2ac5` before TASK-0007 starts.
+CI state reconciliation was attempted after the TASK-0006 push, but GitHub Actions could not be inspected from this environment. This was later superseded by verified Backend CI run #60 at commit `59e999b4135e393a1bb3768a11fe8ba79c18791e`.
+
+## TASK-0007 Progress
+
+`docs/LOCAL_ENVIRONMENT.md` was added as the local backend environment setup guide. It documents Python 3.12, virtual environments, dependency installation, validation commands, common setup failures, and the current verified PR CI state.
 
 ## Current Documentation Risk Summary
 
 - Stale implementation state: older backlog and sprint docs still describe pending work that appears partially or fully implemented.
-- Stale CI state: older tooling notes still say automated checks or workflow creation are missing even though Backend CI exists and PR #1 passed run #54.
+- Stale CI state: older tooling notes still say automated checks or workflow creation are missing even though Backend CI exists and PR #1 passed run #60.
 - Duplicate task sources: `docs/TASKS.md`, `docs/GITHUB_ISSUES_TO_CREATE.md`, sprint reviews, fix logs, and agent changelog all describe work state from different moments.
 - Historical notes mistaken as current instructions: sprint reviews, council review, automation note, and tooling note can be read as active guidance unless clearly labeled.
 - Broad planning docs conflicting with current sprint reality: role-based and drift-control guidance is useful, but should not override the current agent operating layer or verified CI state.
@@ -31,7 +35,7 @@ CI state reconciliation was attempted after the TASK-0006 push, but GitHub Actio
 | File | Current Role | Risk Level | Problem | Recommended Action | Timing |
 |---|---|---:|---|---|---|
 | `docs/TASKS.md` | Backlog and phase task list. | High | Multiple statuses appear stale relative to implemented backend, CI, audit, and scoring work. | Update | Now |
-| `docs/GITHUB_ISSUES_TO_CREATE.md` | Draft issue backlog. | High | Still lists "Add CI workflow" as remaining even though Backend CI exists and passed PR #1 run #54. | Update | Now |
+| `docs/GITHUB_ISSUES_TO_CREATE.md` | Draft issue backlog. | High | Still lists "Add CI workflow" as remaining even though Backend CI exists and passed PR #1 run #60. | Update | Now |
 | `docs/TOOLING_NOTES.md` | Early tooling rationale. | High | Says workflow file creation was not completed; this conflicts with current CI. | Mark historical | Now |
 | `docs/AUTOMATION_NOTE.md` | Short note to add backend checks. | High | Says automated backend checks should be added; Backend CI already exists. | Mark historical | Now |
 | `docs/FIX_LOG.md` | Sprint fix summary. | Medium | Historical label added; `10 passed` remains a historical local result, not current validation. | Mark historical | Before merge |
@@ -79,7 +83,7 @@ CI state reconciliation was attempted after the TASK-0006 push, but GitHub Actio
 
 ### `docs/GITHUB_ISSUES_TO_CREATE.md`
 
-- Why it needs update: It lists "Add CI workflow" as remaining even though Backend CI exists and passed PR #1 run #54.
+- Why it needs update: It lists "Add CI workflow" as remaining even though Backend CI exists and passed PR #1 run #60.
 - Exact section to update: `Remaining issues`.
 - Safe change type: Move "Add CI workflow" to completed or replace it with a narrower "document CI troubleshooting/local environment" issue.
 - What not to change: Do not create, close, or renumber GitHub issues from this document.
@@ -187,17 +191,15 @@ CI state reconciliation was attempted after the TASK-0006 push, but GitHub Actio
 
 ## Proposed Cleanup Order
 
-1. Manually verify PR #1 Backend CI for latest local HEAD `2b1645c70674c530f8af462c2a180bc32baa2ac5`.
-2. Add `docs/LOCAL_ENVIRONMENT.md` so local Python 3.12/dependency setup is reproducible.
-3. Add `docs/CI_TROUBLESHOOTING.md` for format, lint, test, and GitHub Actions failures.
-4. Add a PR checklist or template for validation, manual work, and scope controls.
-5. Reconcile `docs/TASKS.md` against current source, tests, verified PR #1 Backend CI, and `docs/ACTIVE_TASKS.md`.
-6. Clarify current tooling in `docs/STACK.md` without changing CI or dependencies.
-7. Reconcile `docs/DATA_MODEL.md` against ORM models before migration/reporting/scoring persistence work.
-8. Mark remaining review artifacts as historical where needed, including `docs/COUNCIL_REVIEW_001.md`.
-9. Update `docs/CONTEXT_INDEX.md` to identify historical files and point future agents to canonical active sources.
-10. Update `docs/DOCS_INVENTORY.md` after cleanup so it reflects new labels and any archive decisions.
-11. Archive obsolete notes under `docs/archive/` after PR merge if the team wants a cleaner top-level docs folder.
+1. Add `docs/CI_TROUBLESHOOTING.md` for format, lint, test, and GitHub Actions failures.
+2. Add a PR checklist or template for validation, manual work, and scope controls.
+3. Reconcile `docs/TASKS.md` against current source, tests, verified PR #1 Backend CI, and `docs/ACTIVE_TASKS.md`.
+4. Clarify current tooling in `docs/STACK.md` without changing CI or dependencies.
+5. Reconcile `docs/DATA_MODEL.md` against ORM models before migration/reporting/scoring persistence work.
+6. Mark remaining review artifacts as historical where needed, including `docs/COUNCIL_REVIEW_001.md`.
+7. Update `docs/CONTEXT_INDEX.md` to identify historical files and point future agents to canonical active sources.
+8. Update `docs/DOCS_INVENTORY.md` after cleanup so it reflects new labels and any archive decisions.
+9. Archive obsolete notes under `docs/archive/` after PR merge if the team wants a cleaner top-level docs folder.
 
 ## Manual Work Required
 
@@ -214,7 +216,7 @@ CI state reconciliation was attempted after the TASK-0006 push, but GitHub Actio
 ### Can be deferred
 
 - Move historical docs to `docs/archive/`.
-- Add `docs/LOCAL_ENVIRONMENT.md`, `docs/CI_TROUBLESHOOTING.md`, `docs/API_CONTRACT.md`, `docs/MIGRATIONS_PLAN.md`, `docs/REPORTING_PLAN.md`, `docs/SCORING_PERSISTENCE_PLAN.md`, and a PR checklist.
+- Add `docs/CI_TROUBLESHOOTING.md`, `docs/API_CONTRACT.md`, `docs/MIGRATIONS_PLAN.md`, `docs/REPORTING_PLAN.md`, `docs/SCORING_PERSISTENCE_PLAN.md`, and a PR checklist.
 - Merge redundant lightweight docs such as `docs/NOTE.md` into canonical product or drift-control docs.
 
 ## Risks If Cleanup Is Skipped
@@ -225,4 +227,4 @@ The largest operational risk is that an agent reads `docs/TASKS.md`, `docs/GITHU
 
 ## Next Recommended Task
 
-Manual CI verification for PR #1 latest head, then TASK-0007: Add local environment setup doc.
+TASK-0008: Add CI troubleshooting doc.
