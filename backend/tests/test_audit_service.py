@@ -24,7 +24,10 @@ def test_fetch_returns_structured_success_with_mock_transport() -> None:
         return httpx.Response(
             200,
             headers={"content-type": "text/html"},
-            text="<html><head><title>Clinic</title></head><body>Contact us</body></html>",
+            text=(
+                "<html><head><title>Clinic</title></head>"
+                "<body>Contact us</body></html>"
+            ),
             request=request,
         )
 
