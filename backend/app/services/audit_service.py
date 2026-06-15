@@ -82,8 +82,15 @@ def build_audit_checks(fetch: WebsiteFetchResult) -> list[AuditCheck]:
     """Build deterministic checks from fetched HTML."""
     if fetch.status != "success" or not fetch.html:
         return [
-            AuditCheck(name="website_loads", status="false", evidence=fetch.error_type),
-            AuditCheck(name="https_enabled", status=_https_status(fetch.requested_url)),
+            AuditCheck(
+                name="website_loads",
+                status="false",
+                evidence=fetch.error_type,
+            ),
+            AuditCheck(
+                name="https_enabled",
+                status=_https_status(fetch.requested_url),
+            ),
             AuditCheck(name="title_exists", status="unknown"),
             AuditCheck(name="meta_description_exists", status="unknown"),
             AuditCheck(name="phone_detected", status="unknown"),
@@ -186,7 +193,12 @@ def _regex_check(name: str, html: str, pattern: str) -> AuditCheck:
     return AuditCheck(name=name, status="false")
 
 
-def _contains_check(name: str, lower_html: str, needle: str, evidence: str) -> AuditCheck:
+def _contains_check(
+    name: str,
+    lower_html: str,
+    needle: str,
+    evidence: str,
+) -> AuditCheck:
     if needle in lower_html:
         return AuditCheck(name=name, status="true", evidence=evidence)
     return AuditCheck(name=name, status="false")
