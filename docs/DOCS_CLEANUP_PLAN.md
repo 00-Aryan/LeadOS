@@ -30,10 +30,14 @@ CI state reconciliation was attempted after the TASK-0006 push, but GitHub Actio
 
 `docs/PR_CHECKLIST.md` was added as the canonical PR readiness checklist. It documents merge readiness, docs-only checks, backend-change checks, dependency/tooling checks, manual verification, deferred items, and agent safety rules.
 
+## TASK-0010 Progress
+
+`docs/BACKLOG_RECONCILIATION.md` was added as the canonical implementation backlog reconciliation. It records source priority, historical backlog risks, GitHub issue access status, candidate tasks, the recommended implementation sequence, and the next task decision.
+
 ## Current Documentation Risk Summary
 
 - Stale implementation state: older backlog and sprint docs still describe pending work that appears partially or fully implemented.
-- Stale CI state: older tooling notes still say automated checks or workflow creation are missing even though Backend CI exists and PR #1 passed run #65.
+- Stale CI state: older tooling notes still say automated checks or workflow creation are missing even though Backend CI exists and PR #1 passed run #67.
 - Duplicate task sources: `docs/TASKS.md`, `docs/GITHUB_ISSUES_TO_CREATE.md`, sprint reviews, fix logs, and agent changelog all describe work state from different moments.
 - Historical notes mistaken as current instructions: sprint reviews, council review, automation note, and tooling note can be read as active guidance unless clearly labeled.
 - Broad planning docs conflicting with current sprint reality: role-based and drift-control guidance is useful, but should not override the current agent operating layer or verified CI state.
@@ -42,8 +46,8 @@ CI state reconciliation was attempted after the TASK-0006 push, but GitHub Actio
 
 | File | Current Role | Risk Level | Problem | Recommended Action | Timing |
 |---|---|---:|---|---|---|
-| `docs/TASKS.md` | Backlog and phase task list. | High | Multiple statuses appear stale relative to implemented backend, CI, audit, and scoring work. | Update | Now |
-| `docs/GITHUB_ISSUES_TO_CREATE.md` | Draft issue backlog. | High | Still lists "Add CI workflow" as remaining even though Backend CI exists and passed PR #1 run #65. | Update | Now |
+| `docs/TASKS.md` | Backlog and phase task list. | High | Multiple statuses appear stale relative to implemented backend, CI, audit, and scoring work. | Reference through `docs/BACKLOG_RECONCILIATION.md` before update | Now |
+| `docs/GITHUB_ISSUES_TO_CREATE.md` | Draft issue backlog. | High | Still lists "Add CI workflow" as remaining even though Backend CI exists and passed PR #1 run #67. | Reference through `docs/BACKLOG_RECONCILIATION.md` before update | Now |
 | `docs/TOOLING_NOTES.md` | Early tooling rationale. | High | Says workflow file creation was not completed; this conflicts with current CI. | Mark historical | Now |
 | `docs/AUTOMATION_NOTE.md` | Short note to add backend checks. | High | Says automated backend checks should be added; Backend CI already exists. | Mark historical | Now |
 | `docs/FIX_LOG.md` | Sprint fix summary. | Medium | Historical label added; `10 passed` remains a historical local result, not current validation. | Mark historical | Before merge |
@@ -91,7 +95,7 @@ CI state reconciliation was attempted after the TASK-0006 push, but GitHub Actio
 
 ### `docs/GITHUB_ISSUES_TO_CREATE.md`
 
-- Why it needs update: It lists "Add CI workflow" as remaining even though Backend CI exists and passed PR #1 run #65.
+- Why it needs update: It lists "Add CI workflow" as remaining even though Backend CI exists and passed PR #1 run #67.
 - Exact section to update: `Remaining issues`.
 - Safe change type: Move "Add CI workflow" to completed or replace it with a narrower "document CI troubleshooting/local environment" issue.
 - What not to change: Do not create, close, or renumber GitHub issues from this document.
@@ -199,19 +203,20 @@ CI state reconciliation was attempted after the TASK-0006 push, but GitHub Actio
 
 ## Proposed Cleanup Order
 
-1. Reconcile `docs/TASKS.md` against current source, tests, verified PR #1 Backend CI, and `docs/ACTIVE_TASKS.md`.
-2. Clarify current tooling in `docs/STACK.md` without changing CI or dependencies.
-3. Reconcile `docs/DATA_MODEL.md` against ORM models before migration/reporting/scoring persistence work.
-4. Mark remaining review artifacts as historical where needed, including `docs/COUNCIL_REVIEW_001.md`.
-5. Update `docs/CONTEXT_INDEX.md` to identify historical files and point future agents to canonical active sources.
-6. Update `docs/DOCS_INVENTORY.md` after cleanup so it reflects new labels and any archive decisions.
-7. Archive obsolete notes under `docs/archive/` after PR merge if the team wants a cleaner top-level docs folder.
+1. Manually verify GitHub issue state before starting TASK-0203.
+2. Reconcile `docs/TASKS.md` against current source, tests, verified PR #1 Backend CI, and `docs/ACTIVE_TASKS.md`.
+3. Clarify current tooling in `docs/STACK.md` without changing CI or dependencies.
+4. Reconcile `docs/DATA_MODEL.md` against ORM models before migration/reporting/scoring persistence work.
+5. Mark remaining review artifacts as historical where needed, including `docs/COUNCIL_REVIEW_001.md`.
+6. Update `docs/CONTEXT_INDEX.md` to identify historical files and point future agents to canonical active sources.
+7. Update `docs/DOCS_INVENTORY.md` after cleanup so it reflects new labels and any archive decisions.
+8. Archive obsolete notes under `docs/archive/` after PR merge if the team wants a cleaner top-level docs folder.
 
 ## Manual Work Required
 
 ### Required now
 
-- Decide whether the next cleanup task should add historical labels only or also reconcile active backlog statuses.
+- Manually verify current GitHub issue state before starting TASK-0203 because GitHub CLI could not connect during TASK-0010.
 - Keep PR #1 Backend CI green for the latest head commit if any new commit is pushed.
 
 ### Required before merge
@@ -233,4 +238,4 @@ The largest operational risk is that an agent reads `docs/TASKS.md`, `docs/GITHU
 
 ## Next Recommended Task
 
-TASK-0010: Reconcile active implementation backlog against GitHub issues.
+TASK-0203: CSV lead import validator with clear invalid-row reporting and import summary.

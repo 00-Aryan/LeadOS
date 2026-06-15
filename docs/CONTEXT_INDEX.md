@@ -9,6 +9,7 @@ Some documents are retained for traceability and may not represent current imple
 ## Active Task Source
 
 - `docs/ACTIVE_TASKS.md`: Canonical active task index for current executable work.
+- `docs/BACKLOG_RECONCILIATION.md`: Canonical implementation backlog reconciliation and next-task decision after Phase 0 hardening.
 - Historical task and backlog files such as `docs/TASKS.md`, `docs/GITHUB_ISSUES_TO_CREATE.md`, `docs/FIX_LOG.md`, `docs/SPRINT_1_REVIEW.md`, and `docs/SPRINT_2_REVIEW.md` are references only. Do not execute tasks from them without checking `docs/ACTIVE_TASKS.md` first.
 
 ## Product Context
@@ -17,6 +18,7 @@ Some documents are retained for traceability and may not represent current imple
 - `docs/PRODUCT_SPEC.md`: Product thesis, target user, MVP modules, non-goals, and quality bar.
 - `docs/MVP_SCOPE.md`: In-scope and out-of-scope MVP capabilities.
 - `docs/ACTIVE_TASKS.md`: Canonical active task index.
+- `docs/BACKLOG_RECONCILIATION.md`: Current reconciled implementation sequence and deferred-work guardrails.
 - `docs/TASKS.md`: Historical backlog, task IDs, and phase structure.
 
 ## Architecture Context

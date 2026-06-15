@@ -10,9 +10,9 @@ Historical files such as `docs/TASKS.md`, `docs/GITHUB_ISSUES_TO_CREATE.md`, `do
 
 - PR: #1
 - Branch: phase-0-product-foundation
-- Latest verified CI: Backend CI passed at commit `bd79762147ac0732bc5185cad50110ad9984be7e`, run #65 / 27563984088
+- Latest verified CI: Backend CI passed at commit `8e5f2a5c1a48884c110ccf8ed53027d72f183416`, run #67 / 27564758959
 - Local validation caveat: local tests may fail to run on machines without Python 3.12 and backend dependencies; GitHub Actions is current PR validation source of truth.
-- Latest local HEAD: `bd79762147ac0732bc5185cad50110ad9984be7e`
+- Latest local HEAD: `8e5f2a5c1a48884c110ccf8ed53027d72f183416`
 - Current-head CI status: Current local HEAD matches the latest verified CI commit.
 
 ## Current Operating Rule
@@ -24,22 +24,24 @@ No feature work should begin unless the latest PR head has passing Backend CI or
 | ID | Task | Type | Status | Source | Notes |
 |---|---|---|---|---|---|
 | TASK-0006 | Create canonical active task index | Documentation/workflow | Complete pending review | User-assigned task | Created this file and updated allowed operating docs only. |
-| TASK-0006A | Reconcile active task index after TASK-0006 push | Documentation/state reconciliation | Complete | User-assigned task | Later superseded by verified PR #1 Backend CI run #65 at commit `bd79762147ac0732bc5185cad50110ad9984be7e`. |
+| TASK-0006A | Reconcile active task index after TASK-0006 push | Documentation/state reconciliation | Complete | User-assigned task | Later superseded by verified PR #1 Backend CI run #67 at commit `8e5f2a5c1a48884c110ccf8ed53027d72f183416`. |
 | TASK-0007 | Add local environment setup doc | Documentation/workflow | Complete pending review | User-assigned task | Created `docs/LOCAL_ENVIRONMENT.md` and updated allowed operating docs only. |
-| TASK-0008 | Add CI troubleshooting doc | Documentation/workflow | Complete pending review | User-assigned task | Created `docs/CI_TROUBLESHOOTING.md`; Backend CI later verified at commit `bd79762147ac0732bc5185cad50110ad9984be7e`. |
-| TASK-0009 | Add PR checklist | Documentation/workflow | Complete pending review | User-assigned task | Created `docs/PR_CHECKLIST.md` and updated allowed operating docs only. |
+| TASK-0008 | Add CI troubleshooting doc | Documentation/workflow | Complete pending review | User-assigned task | Created `docs/CI_TROUBLESHOOTING.md`; Backend CI later verified at commit `8e5f2a5c1a48884c110ccf8ed53027d72f183416`. |
+| TASK-0009 | Add PR checklist | Documentation/workflow | Complete pending review | User-assigned task | Created `docs/PR_CHECKLIST.md`; Backend CI later verified at commit `8e5f2a5c1a48884c110ccf8ed53027d72f183416`. |
+| TASK-0010 | Reconcile active implementation backlog against GitHub issues | Documentation/workflow | Complete pending review and manual GitHub issue verification | User-assigned task | Created `docs/BACKLOG_RECONCILIATION.md`; GitHub CLI could not inspect issue state from this environment. |
 
 ## Blocked / Waiting
 
 | ID | Task | Blocker | Required Action | Notes |
 |---|---|---|---|---|
 | WAIT-0001 | Full local backend test validation | Local Python 3.12 / pytest environment not fully provisioned | Use GitHub Actions as PR validation source or provision local Python 3.12 dependencies | Do not claim local tests pass unless they are actually run. |
+| WAIT-0002 | GitHub issue state verification | GitHub CLI could not connect during TASK-0010 | Manually verify current GitHub issues and PR body before starting TASK-0203 | Local docs support TASK-0203 as next, but live issue state was not accessible. |
 
 ## Next Up
 
 | ID | Task | Type | Why Next | Acceptance Criteria |
 |---|---|---|---|---|
-| TASK-0010 | Reconcile active implementation backlog against GitHub issues | Documentation/workflow | Historical backlog files are labeled but not reconciled into an executable implementation queue. | Active implementation tasks are aligned with GitHub issues/current PR state; historical docs remain references only. |
+| TASK-0203 | CSV lead import validator with clear invalid-row reporting and import summary | Backend implementation | The MVP loop starts with CSV import, and `docs/BACKLOG_RECONCILIATION.md` confirms this is the next implementation task pending manual GitHub issue verification. | Invalid rows return clear reasons; import summary reports total, valid, invalid, and duplicate rows; focused backend tests cover expected and invalid inputs; latest PR head Backend CI passes. |
 
 ## Deferred
 
