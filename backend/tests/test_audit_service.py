@@ -6,7 +6,7 @@ from app.services.audit_service import audit_website, fetch_website
 
 
 def test_fetch_blocks_non_http_urls() -> None:
-    result = fetch_website("file:///etc/passwd")
+    result = fetch_website("ftp://example.com/resource")
 
     assert result.status == "blocked"
     assert result.error_type == "invalid_url"
@@ -25,8 +25,7 @@ def test_fetch_returns_structured_success_with_mock_transport() -> None:
             200,
             headers={"content-type": "text/html"},
             text=(
-                "<html><head><title>Clinic</title></head>"
-                "<body>Contact us</body></html>"
+                "<html><head><title>Clinic</title></head><body>Contact us</body></html>"
             ),
             request=request,
         )
