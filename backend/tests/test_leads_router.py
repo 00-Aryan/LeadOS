@@ -1,15 +1,13 @@
 """Lead router tests."""
 
 CSV_HEADER = (
-    "business_name,category,city,state,phone,website,rating,review_count,"
-    "address,source_url\n"
+    "business_name,category,city,state,phone,website,rating,review_count,address,source_url\n"
 )
 
 
 def test_lead_import_route_accepts_csv_upload(client) -> None:
     csv_content = (
-        CSV_HEADER
-        + "Healthy Smile Clinic,Dentist,Ranchi,Jharkhand,+91 98765 43210,"
+        CSV_HEADER + "Healthy Smile Clinic,Dentist,Ranchi,Jharkhand,+91 98765 43210,"
         "https://example.com,4.6,150,Main Road,source\n"
     )
 
@@ -29,8 +27,7 @@ def test_lead_import_route_accepts_csv_upload(client) -> None:
 
 def test_lead_import_route_returns_partial_import_result(client) -> None:
     csv_content = (
-        CSV_HEADER
-        + "Healthy Smile Clinic,Dentist,Ranchi,Jharkhand,+91 98765 43210,"
+        CSV_HEADER + "Healthy Smile Clinic,Dentist,Ranchi,Jharkhand,+91 98765 43210,"
         "https://example.com,4.6,150,Main Road,source\n"
         "Broken Clinic,Dentist,Ranchi,Jharkhand,+91,example.com,4.6,150,"
         "Main Road,source\n"
@@ -47,10 +44,7 @@ def test_lead_import_route_returns_partial_import_result(client) -> None:
     assert payload["summary"]["valid_rows"] == 1
     assert payload["summary"]["invalid_rows"] == 1
     assert payload["invalid_rows"][0]["row_number"] == 3
-    assert (
-        "website must start with http:// or https://"
-        in payload["invalid_rows"][0]["reasons"]
-    )
+    assert "website must start with http:// or https://" in payload["invalid_rows"][0]["reasons"]
 
 
 def test_lead_import_route_rejects_non_csv_upload(client) -> None:
@@ -60,10 +54,7 @@ def test_lead_import_route_rejects_non_csv_upload(client) -> None:
     )
 
     assert response.status_code == 400
-    assert (
-        response.json()["detail"]
-        == "Uploaded lead import file must use a .csv filename."
-    )
+    assert response.json()["detail"] == "Uploaded lead import file must use a .csv filename."
 
 
 def test_lead_import_route_rejects_invalid_json_payload(client) -> None:

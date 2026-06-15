@@ -6,8 +6,7 @@ from app.models import LeadImportError, LeadImportRun
 from app.services.lead_import_service import LeadImportService
 
 CSV_HEADER = (
-    "business_name,category,city,state,phone,website,rating,review_count,"
-    "address,source_url\n"
+    "business_name,category,city,state,phone,website,rating,review_count,address,source_url\n"
 )
 VALID_ROW = (
     " Healthy  Smile Clinic , Dentist , Ranchi , Jharkhand , +91 98765 43210 ,"
@@ -42,10 +41,7 @@ def test_import_csv_persists_valid_rows_and_run_summary(db_session) -> None:
 
 
 def test_import_csv_rejects_invalid_rows_and_persists_errors(db_session) -> None:
-    csv_content = (
-        CSV_HEADER
-        + ",Dentist,Ranchi,Jharkhand,+91,example.com,bad,-1,Main Road,source\n"
-    )
+    csv_content = CSV_HEADER + ",Dentist,Ranchi,Jharkhand,+91,example.com,bad,-1,Main Road,source\n"
 
     result = LeadImportService().import_csv_text(db_session, csv_content)
 
@@ -61,8 +57,7 @@ def test_import_csv_rejects_invalid_rows_and_persists_errors(db_session) -> None
 
 def test_import_csv_supports_partial_import(db_session) -> None:
     csv_content = (
-        CSV_HEADER
-        + "Healthy Smile Clinic,Dentist,Ranchi,Jharkhand,+91,https://example.com,"
+        CSV_HEADER + "Healthy Smile Clinic,Dentist,Ranchi,Jharkhand,+91,https://example.com,"
         "4.6,150,Main Road,source\n"
         "Broken Clinic,Dentist,Ranchi,Jharkhand,+91,example.com,4.2,20,"
         "Main Road,source\n"
@@ -94,8 +89,7 @@ def test_import_csv_rejects_blank_required_field(db_session) -> None:
     result = LeadImportService().import_csv_text(
         db_session,
         (
-            CSV_HEADER
-            + "Healthy Smile Clinic,Dentist,  ,Jharkhand,+91,https://example.com,"
+            CSV_HEADER + "Healthy Smile Clinic,Dentist,  ,Jharkhand,+91,https://example.com,"
             "4.6,150,Main Road,source\n"
         ),
     )
@@ -181,8 +175,7 @@ def test_import_csv_handles_header_only_csv_without_crash(db_session) -> None:
 
 def test_import_csv_detects_duplicates_with_normalized_keys(db_session) -> None:
     csv_content = (
-        CSV_HEADER
-        + "Healthy Smile Clinic,Dentist,Ranchi,Jharkhand,+91,https://example.com,"
+        CSV_HEADER + "Healthy Smile Clinic,Dentist,Ranchi,Jharkhand,+91,https://example.com,"
         "4.6,150,Main Road,source\n"
         " healthy  smile clinic ,Dentist,RANCHI,Jharkhand,+91,"
         "https://example.com,4.6,150,Main Road,source\n"
