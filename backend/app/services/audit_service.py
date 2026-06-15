@@ -97,8 +97,15 @@ def build_audit_checks(fetch: WebsiteFetchResult) -> list[AuditCheck]:
     html = fetch.html
     lower_html = html.lower()
     return [
-        AuditCheck(name="website_loads", status="true", evidence=str(fetch.status_code)),
-        AuditCheck(name="https_enabled", status=_https_status(fetch.final_url or fetch.requested_url)),
+        AuditCheck(
+            name="website_loads",
+            status="true",
+            evidence=str(fetch.status_code),
+        ),
+        AuditCheck(
+            name="https_enabled",
+            status=_https_status(fetch.final_url or fetch.requested_url),
+        ),
         _regex_check("title_exists", html, r"<title[^>]*>\s*[^<]+\s*</title>"),
         _regex_check(
             "meta_description_exists",
@@ -106,19 +113,33 @@ def build_audit_checks(fetch: WebsiteFetchResult) -> list[AuditCheck]:
             r"<meta[^>]+name=[\"']description[\"'][^>]+content=[\"'][^\"']+[\"']",
         ),
         _regex_check("phone_detected", html, r"tel:\+?[0-9][0-9\-\s()]{6,}"),
-        _contains_check("whatsapp_detected", lower_html, "whatsapp", "WhatsApp signal found"),
+        _contains_check(
+            "whatsapp_detected",
+            lower_html,
+            "whatsapp",
+            "WhatsApp signal found",
+        ),
         _contains_any_check(
             "booking_link_detected",
             lower_html,
             ("book appointment", "booking", "calendly", "appoint"),
         ),
-        _contains_any_check("contact_signal_detected", lower_html, ("contact", "enquiry", "inquiry")),
+        _contains_any_check(
+            "contact_signal_detected",
+            lower_html,
+            ("contact", "enquiry", "inquiry"),
+        ),
         _contains_any_check(
             "social_link_detected",
             lower_html,
             ("facebook.com", "instagram.com", "linkedin.com", "youtube.com"),
         ),
-        _contains_check("schema_markup_detected", lower_html, "schema.org", "schema.org found"),
+        _contains_check(
+            "schema_markup_detected",
+            lower_html,
+            "schema.org",
+            "schema.org found",
+        ),
     ]
 
 
@@ -134,8 +155,17 @@ def _validate_fetch_url(url: str) -> str | None:
     except ValueError:
         return None
 
-    if ip.is_private or ip.is_loopback or ip.is_link_local or ip.is_multicast or ip.is_reserved:
-        return "Direct requests to private, local, link-local, multicast, or reserved IPs are blocked."
+    if (
+        ip.is_private
+        or ip.is_loopback
+        or ip.is_link_local
+        or ip.is_multicast
+        or ip.is_reserved
+    ):
+        return (
+            "Direct requests to private, local, link-local, multicast, "
+            "or reserved IPs are blocked."
+        )
     return None
 
 
@@ -162,7 +192,11 @@ def _contains_check(name: str, lower_html: str, needle: str, evidence: str) -> A
     return AuditCheck(name=name, status="false")
 
 
-def _contains_any_check(name: str, lower_html: str, needles: tuple[str, ...]) -> AuditCheck:
+def _contains_any_check(
+    name: str,
+    lower_html: str,
+    needles: tuple[str, ...],
+) -> AuditCheck:
     for needle in needles:
         if needle in lower_html:
             return AuditCheck(name=name, status="true", evidence=needle)
