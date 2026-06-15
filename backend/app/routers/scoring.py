@@ -1,7 +1,7 @@
 """Lead scoring API routes."""
 
-from pydantic import BaseModel
 from fastapi import APIRouter
+from pydantic import BaseModel
 
 from app.schemas.audit import WebsiteAuditResult
 from app.schemas.lead import LeadInput
