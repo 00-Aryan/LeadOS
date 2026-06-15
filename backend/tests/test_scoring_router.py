@@ -59,6 +59,9 @@ def test_scoring_preview_route_returns_explainable_score() -> None:
 def test_scoring_preview_route_rejects_invalid_lead_payload() -> None:
     client = TestClient(app)
 
-    response = client.post("/scoring/preview", json={"lead": {"business_name": ""}})
+    response = client.post(
+        "/scoring/preview",
+        json={"lead": {"business_name": ""}},
+    )
 
     assert response.status_code == 422
