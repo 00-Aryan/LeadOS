@@ -1,168 +1,103 @@
-"""CSV lead import validation service."""
-
-from __future__ import annotations
+"""CSV lead import service with validation, transformation and persistence."""
 
 import csv
 from io import StringIO
-from typing import Iterable
 
-from app.schemas.lead import LeadImportError, LeadImportSummary, LeadInput
+from sqlalchemy.orm import Session
 
-REQUIRED_COLUMNS = ("business_name", "category", "city")
-EXPECTED_COLUMNS = (
-    "business_name",
-    "category",
-    "city",
-    "state",
-    "phone",
-    "website",
-    "rating",
-    "review_count",
-    "address",
-    "source_url",
-)
+from app.repositories import LeadRepository
+from app.schemas.lead import LeadImportErrorItem, LeadImportSummary
+from app.services.lead_transform_service import transform_lead_row
 
 
-def describe_service() -> str:
-    """Return the service responsibility."""
-    return "Validates and normalizes incoming lead rows."
+class LeadImportService:
+    """Import CSV lead data into SQL with deterministic validation."""
 
+    def __init__(self, repository: LeadRepository | None = None) -> None:
+        self.repository = repository or LeadRepository()
 
-def import_leads_from_csv(csv_content: str) -> LeadImportSummary:
-    """Validate CSV text and return accepted/rejected rows.
+    def import_csv_text(
+        self,
+        db: Session,
+        csv_content: str,
+        *,
+        source_name: str | None = None,
+    ) -> LeadImportSummary:
+        """Import CSV content and commit once at the end.
 
-    This function is intentionally deterministic and persistence-free. Storage
-    will be added behind a repository boundary after the import contract is
-    stable.
-    """
-    reader = csv.DictReader(StringIO(csv_content))
-    accepted: list[LeadInput] = []
-    rejected: list[LeadImportError] = []
-
-    if reader.fieldnames is None:
-        return LeadImportSummary(
-            total_rows=0,
-            valid_rows=0,
-            invalid_rows=1,
-            accepted=[],
-            rejected=[
-                LeadImportError(
-                    row_number=0,
-                    reasons=["CSV header is missing."],
-                    raw_row={},
-                )
-            ],
-        )
-
-    missing_columns = [column for column in REQUIRED_COLUMNS if column not in reader.fieldnames]
-    if missing_columns:
-        return LeadImportSummary(
-            total_rows=0,
-            valid_rows=0,
-            invalid_rows=1,
-            accepted=[],
-            rejected=[
-                LeadImportError(
-                    row_number=0,
-                    reasons=[f"Missing required column: {column}" for column in missing_columns],
-                    raw_row={"header": ",".join(reader.fieldnames)},
-                )
-            ],
-        )
-
-    total_rows = 0
-    for row_number, raw_row in enumerate(reader, start=2):
-        total_rows += 1
-        normalized_row = _normalize_row(raw_row)
-        reasons = _validate_row(normalized_row)
-
-        if reasons:
-            rejected.append(
-                LeadImportError(
-                    row_number=row_number,
-                    reasons=reasons,
-                    raw_row=normalized_row,
-                )
+        The service avoids per-row commits to reduce partial-write risk. Invalid
+        rows and duplicates are reported explicitly.
+        """
+        reader = csv.DictReader(StringIO(csv_content))
+        if reader.fieldnames is None:
+            return LeadImportSummary(
+                total_records=0,
+                valid_records=0,
+                invalid_records=1,
+                duplicate_records=0,
+                imported_ids=[],
+                errors=[LeadImportErrorItem(row_number=0, reasons=["CSV header is missing"], raw_row={})],
             )
-            continue
 
-        accepted.append(
-            LeadInput(
-                business_name=normalized_row["business_name"] or "",
-                category=normalized_row["category"] or "",
-                city=normalized_row["city"] or "",
-                state=normalized_row.get("state"),
-                phone=normalized_row.get("phone"),
-                website=normalized_row.get("website"),
-                rating=_parse_float(normalized_row.get("rating")),
-                review_count=_parse_int(normalized_row.get("review_count")),
-                address=normalized_row.get("address"),
-                source_url=normalized_row.get("source_url"),
+        total = 0
+        valid = 0
+        invalid = 0
+        duplicates = 0
+        imported_ids: list[int] = []
+        errors: list[LeadImportErrorItem] = []
+
+        try:
+            for row_number, row in enumerate(reader, start=2):
+                total += 1
+                transformed = transform_lead_row(row)
+                if transformed.reasons:
+                    invalid += 1
+                    errors.append(
+                        LeadImportErrorItem(
+                            row_number=row_number,
+                            reasons=transformed.reasons,
+                            raw_row=dict(row),
+                        )
+                    )
+                    continue
+
+                normalized_name = str(transformed.data["normalized_business_name"])
+                normalized_city = str(transformed.data["normalized_city"])
+                if self.repository.find_duplicate(db, normalized_name, normalized_city):
+                    duplicates += 1
+                    continue
+
+                lead = self.repository.add_lead(db, **transformed.data)
+                imported_ids.append(lead.id)
+                valid += 1
+
+            import_run = self.repository.create_import_run(
+                db,
+                source_name=source_name,
+                total_records=total,
+                valid_records=valid,
+                invalid_records=invalid,
+                duplicate_records=duplicates,
             )
-        )
+            for error in errors:
+                self.repository.add_import_error(
+                    db,
+                    import_run_id=import_run.id,
+                    row_number=error.row_number,
+                    reasons=error.reasons,
+                    raw_row=error.raw_row,
+                )
+            db.commit()
 
-    return LeadImportSummary(
-        total_rows=total_rows,
-        valid_rows=len(accepted),
-        invalid_rows=len(rejected),
-        accepted=accepted,
-        rejected=rejected,
-    )
-
-
-def _normalize_row(row: dict[str, str | None]) -> dict[str, str | None]:
-    """Normalize known columns and ignore unexpected fields."""
-    normalized: dict[str, str | None] = {}
-    for column in EXPECTED_COLUMNS:
-        value = row.get(column)
-        normalized[column] = value.strip() if isinstance(value, str) and value.strip() else None
-    return normalized
-
-
-def _validate_row(row: dict[str, str | None]) -> list[str]:
-    """Return validation errors for one normalized row."""
-    reasons: list[str] = []
-
-    for column in REQUIRED_COLUMNS:
-        if not row.get(column):
-            reasons.append(f"{column} is required.")
-
-    rating = row.get("rating")
-    if rating is not None:
-        parsed_rating = _parse_float(rating)
-        if parsed_rating is None:
-            reasons.append("rating must be numeric.")
-        elif parsed_rating < 0 or parsed_rating > 5:
-            reasons.append("rating must be between 0 and 5.")
-
-    review_count = row.get("review_count")
-    if review_count is not None:
-        parsed_review_count = _parse_int(review_count)
-        if parsed_review_count is None:
-            reasons.append("review_count must be an integer.")
-        elif parsed_review_count < 0:
-            reasons.append("review_count cannot be negative.")
-
-    website = row.get("website")
-    if website is not None and not website.startswith(("http://", "https://")):
-        reasons.append("website must start with http:// or https://.")
-
-    return reasons
-
-
-def _parse_float(value: str | None) -> float | None:
-    if value is None:
-        return None
-    try:
-        return float(value)
-    except ValueError:
-        return None
-
-
-def _parse_int(value: str | None) -> int | None:
-    if value is None:
-        return None
-    try:
-        return int(value)
-    except ValueError:
-        return None
+            return LeadImportSummary(
+                import_run_id=import_run.id,
+                total_records=total,
+                valid_records=valid,
+                invalid_records=invalid,
+                duplicate_records=duplicates,
+                imported_ids=imported_ids,
+                errors=errors,
+            )
+        except Exception:
+            db.rollback()
+            raise
