@@ -1,18 +1,21 @@
-"""Application configuration for LeadOS."""
+"""Application configuration settings."""
 
-from pydantic import BaseModel
+from functools import lru_cache
+
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
-class Settings(BaseModel):
-    """Runtime settings.
+class Settings(BaseSettings):
+    """Application settings loaded from environment variables."""
 
-    Keep this minimal during Phase 0. Environment-backed settings can be added
-    when persistence and external providers are introduced.
-    """
+    model_config = SettingsConfigDict(env_prefix="LEADOS_", extra="ignore")
 
     app_name: str = "LeadOS"
     environment: str = "development"
-    enable_future_tenant_fields: bool = True
+    database_url: str = "sqlite:///./data/leados.db"
 
 
-settings = Settings()
+@lru_cache
+def get_settings() -> Settings:
+    """Return cached application settings."""
+    return Settings()
