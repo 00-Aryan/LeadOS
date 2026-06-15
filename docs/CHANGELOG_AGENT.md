@@ -27,3 +27,7 @@ GitHub Actions could not be inspected from this environment after the TASK-0006 
 ## TASK-0007 Local Environment Setup
 
 Added local environment setup guidance so humans and agents can reproduce backend validation more reliably. Latest verified Backend CI is PR #1 run #60 at commit `59e999b4135e393a1bb3768a11fe8ba79c18791e`.
+
+## TASK-0008 CI Troubleshooting
+
+Added CI troubleshooting guidance so future agents diagnose GitHub Actions failures by failing step and avoid unrelated changes.

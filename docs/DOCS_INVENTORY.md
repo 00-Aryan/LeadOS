@@ -23,6 +23,10 @@ GitHub Actions could not be inspected from this environment after the TASK-0006 
 
 `docs/LOCAL_ENVIRONMENT.md` now exists as the local backend setup guide. The latest verified PR state is Backend CI run #60 at commit `59e999b4135e393a1bb3768a11fe8ba79c18791e`.
 
+## TASK-0008 CI Troubleshooting Update
+
+`docs/CI_TROUBLESHOOTING.md` now exists as the Backend CI troubleshooting guide for failing-step diagnosis, local equivalents, and agent safety rules.
+
 ## Executive Summary
 
 LeadOS has a strong documentation base for product boundaries, rubrics, backend validation, and AI-agent execution. The new agent operating layer is useful and should be treated as the primary control layer for future Codex sessions.
@@ -41,6 +45,7 @@ The main risk is not missing documentation, but document drift. Several older sp
 | `docs/DONE_CRITERIA.md` | Definition of done for tasks. | Current, canonical. | P0 | Prevents false completion when validation fails. |
 | `docs/VALIDATION_COMMANDS.md` | Backend and docs validation commands. | Current, canonical. | P0 | Needs local environment caveat from `docs/MANUAL_ACTIONS.md`. |
 | `docs/LOCAL_ENVIRONMENT.md` | Local Python and backend validation setup guide. | Current, canonical. | P0 | Use when local validation cannot run or before provisioning backend dependencies. |
+| `docs/CI_TROUBLESHOOTING.md` | Backend CI failure diagnosis and local command mapping. | Current, canonical. | P0 | Use before changing code or tooling to repair GitHub Actions failures. |
 | `docs/MANUAL_ACTIONS.md` | Manual work and environment/CI verification requirements. | Current, operational. | P0 | Tracks verified CI state and local environment caveats. |
 | `docs/CHANGELOG_AGENT.md` | Latest known agent state and blockers. | Current, operational. | P0 | Records PR #1 Backend CI pass at commit `59e999b4135e393a1bb3768a11fe8ba79c18791e`, run #60. |
 | `docs/DECISIONS.md` | ADR-style project decisions. | Current, canonical. | P1 | Controls standalone scope, no scraping, no sending, deterministic-first approach. |
@@ -194,7 +199,7 @@ The main risk is not missing documentation, but document drift. Several older sp
 - `docs/DOCS_INVENTORY.md`: Added by this audit.
 - `docs/API_CONTRACT.md`: A canonical endpoint contract is missing; `docs/API_REVIEW_001.md` is only a focused review.
 - `docs/LOCAL_ENVIRONMENT.md`: Added as the local Python 3.12, dependency install, Ruff, pytest, and validation setup guide.
-- `docs/CI_TROUBLESHOOTING.md`: Missing a focused guide for format/lint/test failures and GitHub Actions inspection.
+- `docs/CI_TROUBLESHOOTING.md`: Added as the focused guide for format/lint/test failures and GitHub Actions inspection.
 - `docs/MIGRATIONS_PLAN.md`: Missing migration strategy for moving beyond local SQLite.
 - `docs/REPORTING_PLAN.md`: Missing canonical plan for SQL extraction/reporting work listed as a blocker.
 - `docs/SCORING_PERSISTENCE_PLAN.md`: Missing plan for score persistence and versioning.
@@ -232,12 +237,12 @@ The main risk is not missing documentation, but document drift. Several older sp
 
 ### Can be deferred
 
-- Create dedicated local environment, CI troubleshooting, migration, reporting, scoring persistence, API contract, PR checklist, and docs maintenance docs.
+- Create dedicated migration, reporting, scoring persistence, API contract, PR checklist, and docs maintenance docs.
 - Merge or archive redundant historical notes after the current PR is stable.
 
 ## Recommendations Before Next Implementation Task
 
-1. Add `docs/CI_TROUBLESHOOTING.md`.
+1. Add a PR checklist or template.
 2. Update stale task and tooling docs so agents do not plan from outdated state.
 3. Treat `AGENTS.md`, `docs/CONTEXT_INDEX.md`, `docs/ACTIVE_TASKS.md`, `docs/WORKFLOW.md`, `docs/DONE_CRITERIA.md`, `docs/VALIDATION_COMMANDS.md`, `docs/MANUAL_ACTIONS.md`, and `docs/CHANGELOG_AGENT.md` as the agent operating layer.
 4. Before feature work, choose one assigned task and read only the relevant domain docs plus affected source files.

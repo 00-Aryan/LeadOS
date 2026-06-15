@@ -22,6 +22,10 @@ CI state reconciliation was attempted after the TASK-0006 push, but GitHub Actio
 
 `docs/LOCAL_ENVIRONMENT.md` was added as the local backend environment setup guide. It documents Python 3.12, virtual environments, dependency installation, validation commands, common setup failures, and the current verified PR CI state.
 
+## TASK-0008 Progress
+
+`docs/CI_TROUBLESHOOTING.md` was added as the Backend CI troubleshooting guide. It documents failing-step diagnosis, local command equivalents, common CI failure categories, and agent safety rules for CI repair.
+
 ## Current Documentation Risk Summary
 
 - Stale implementation state: older backlog and sprint docs still describe pending work that appears partially or fully implemented.
@@ -191,15 +195,14 @@ CI state reconciliation was attempted after the TASK-0006 push, but GitHub Actio
 
 ## Proposed Cleanup Order
 
-1. Add `docs/CI_TROUBLESHOOTING.md` for format, lint, test, and GitHub Actions failures.
-2. Add a PR checklist or template for validation, manual work, and scope controls.
-3. Reconcile `docs/TASKS.md` against current source, tests, verified PR #1 Backend CI, and `docs/ACTIVE_TASKS.md`.
-4. Clarify current tooling in `docs/STACK.md` without changing CI or dependencies.
-5. Reconcile `docs/DATA_MODEL.md` against ORM models before migration/reporting/scoring persistence work.
-6. Mark remaining review artifacts as historical where needed, including `docs/COUNCIL_REVIEW_001.md`.
-7. Update `docs/CONTEXT_INDEX.md` to identify historical files and point future agents to canonical active sources.
-8. Update `docs/DOCS_INVENTORY.md` after cleanup so it reflects new labels and any archive decisions.
-9. Archive obsolete notes under `docs/archive/` after PR merge if the team wants a cleaner top-level docs folder.
+1. Add a PR checklist or template for validation, manual work, and scope controls.
+2. Reconcile `docs/TASKS.md` against current source, tests, verified PR #1 Backend CI, and `docs/ACTIVE_TASKS.md`.
+3. Clarify current tooling in `docs/STACK.md` without changing CI or dependencies.
+4. Reconcile `docs/DATA_MODEL.md` against ORM models before migration/reporting/scoring persistence work.
+5. Mark remaining review artifacts as historical where needed, including `docs/COUNCIL_REVIEW_001.md`.
+6. Update `docs/CONTEXT_INDEX.md` to identify historical files and point future agents to canonical active sources.
+7. Update `docs/DOCS_INVENTORY.md` after cleanup so it reflects new labels and any archive decisions.
+8. Archive obsolete notes under `docs/archive/` after PR merge if the team wants a cleaner top-level docs folder.
 
 ## Manual Work Required
 
@@ -216,7 +219,7 @@ CI state reconciliation was attempted after the TASK-0006 push, but GitHub Actio
 ### Can be deferred
 
 - Move historical docs to `docs/archive/`.
-- Add `docs/CI_TROUBLESHOOTING.md`, `docs/API_CONTRACT.md`, `docs/MIGRATIONS_PLAN.md`, `docs/REPORTING_PLAN.md`, `docs/SCORING_PERSISTENCE_PLAN.md`, and a PR checklist.
+- Add `docs/API_CONTRACT.md`, `docs/MIGRATIONS_PLAN.md`, `docs/REPORTING_PLAN.md`, `docs/SCORING_PERSISTENCE_PLAN.md`, and a PR checklist.
 - Merge redundant lightweight docs such as `docs/NOTE.md` into canonical product or drift-control docs.
 
 ## Risks If Cleanup Is Skipped
@@ -227,4 +230,4 @@ The largest operational risk is that an agent reads `docs/TASKS.md`, `docs/GITHU
 
 ## Next Recommended Task
 
-TASK-0008: Add CI troubleshooting doc.
+TASK-0009: Add PR checklist.

@@ -57,6 +57,7 @@ Some documents are retained for traceability and may not represent current imple
 
 ## CI/Tooling
 
+- `docs/CI_TROUBLESHOOTING.md`: GitHub Actions Backend CI failure diagnosis, failing-step mapping, and agent safety rules for CI repair.
 - `docs/LOCAL_ENVIRONMENT.md`: Local Python 3.12, virtual environment, dependency install, and backend validation setup.
 - `.github/workflows/backend-ci.yml`: GitHub Actions backend CI gate.
 - `backend/Makefile`: Install, format, lint, test, and check commands.

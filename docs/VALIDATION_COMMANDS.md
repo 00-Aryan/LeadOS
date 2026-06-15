@@ -4,6 +4,8 @@ Run commands from the repository root unless the command changes directories.
 
 For local Python setup, dependency installation, and common environment failures, read `docs/LOCAL_ENVIRONMENT.md`.
 
+For GitHub Actions Backend CI failure diagnosis, read `docs/CI_TROUBLESHOOTING.md`.
+
 ## Backend Setup
 
 ```bash
