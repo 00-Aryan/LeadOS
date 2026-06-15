@@ -2,6 +2,10 @@
 
 Use this file to decide what to read before editing. Read narrowly, but always read enough context to understand product boundaries, service ownership, and validation expectations.
 
+## Historical or Stale Docs Warning
+
+Some documents are retained for traceability and may not represent current implementation state. Future agents must treat files marked historical as references only and must check `docs/CHANGELOG_AGENT.md` before acting on them.
+
 ## Product Context
 
 - `README.md`: Project identity, standalone boundary, initial build principle, and deferred areas.

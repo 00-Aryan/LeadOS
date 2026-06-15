@@ -1,5 +1,9 @@
 # Fix Log
 
+> **Status:** Historical reference.
+> This document may describe earlier implementation state, task planning, or validation status.
+> For current agent instructions and repository state, read `AGENTS.md`, `docs/CONTEXT_INDEX.md`, and `docs/CHANGELOG_AGENT.md` first.
+
 ## Sprint 1 fixes
 
 - Added missing FastAPI app entrypoint.

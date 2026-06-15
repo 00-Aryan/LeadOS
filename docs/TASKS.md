@@ -1,5 +1,9 @@
 # LeadOS Task Backlog
 
+> **Status:** Historical/backlog reference, not the active task source of truth.
+> Do not execute tasks from this document without checking `docs/CHANGELOG_AGENT.md`, GitHub issues, and the current PR state.
+> For current agent workflow, read `AGENTS.md` and `docs/WORKFLOW.md`.
+
 ## Phase 0: Product Foundation
 
 ### TASK-0001: Define product boundary
