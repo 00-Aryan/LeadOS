@@ -1,10 +1,12 @@
-"""Lead import schemas."""
+"""Pydantic schemas for lead import and lead output."""
 
-from pydantic import BaseModel, Field
+from datetime import datetime
+
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class LeadInput(BaseModel):
-    """Normalized valid lead row."""
+    """Incoming lead row after validation."""
 
     business_name: str = Field(min_length=1)
     category: str = Field(min_length=1)
@@ -12,14 +14,24 @@ class LeadInput(BaseModel):
     state: str | None = None
     phone: str | None = None
     website: str | None = None
-    rating: float | None = None
-    review_count: int | None = None
+    rating: float | None = Field(default=None, ge=0, le=5)
+    review_count: int | None = Field(default=None, ge=0)
     address: str | None = None
     source_url: str | None = None
 
 
-class LeadImportError(BaseModel):
-    """Validation error for one CSV row."""
+class LeadOutput(LeadInput):
+    """Lead API response."""
+
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    created_at: datetime
+    updated_at: datetime
+
+
+class LeadImportErrorItem(BaseModel):
+    """Rejected CSV row information."""
 
     row_number: int
     reasons: list[str]
@@ -27,10 +39,12 @@ class LeadImportError(BaseModel):
 
 
 class LeadImportSummary(BaseModel):
-    """Summary of a lead import run."""
+    """CSV import result summary."""
 
-    total_rows: int
-    valid_rows: int
-    invalid_rows: int
-    accepted: list[LeadInput]
-    rejected: list[LeadImportError]
+    import_run_id: int | None = None
+    total_records: int
+    valid_records: int
+    invalid_records: int
+    duplicate_records: int
+    imported_ids: list[int]
+    errors: list[LeadImportErrorItem]
