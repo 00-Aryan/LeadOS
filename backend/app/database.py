@@ -33,7 +33,7 @@ def create_all_tables() -> None:
     Production should use migrations, but this helper keeps the current MVP
     setup reproducible without adding Alembic before the schema stabilizes.
     """
-    from app import models  # noqa: F401  Import registers models with metadata.
+    from app import models  # noqa: F401
 
     Base.metadata.create_all(bind=engine)
 
