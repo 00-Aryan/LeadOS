@@ -12,7 +12,7 @@ Historical files such as `docs/TASKS.md`, `docs/GITHUB_ISSUES_TO_CREATE.md`, `do
 - Branch: phase-0-product-foundation
 - Latest verified CI: Backend CI passed at commit `59e999b4135e393a1bb3768a11fe8ba79c18791e`, run #60 / 27554650321
 - Local validation caveat: local tests may fail to run on machines without Python 3.12 and backend dependencies; GitHub Actions is current PR validation source of truth.
-- Latest local HEAD: `04dc898e1010c8a149457a2708fb04659d91c82f`
+- Latest local HEAD: `abfddf741f1f7c8765afd718b43e1f511377e94d`
 - Current-head CI status: Local HEAD is newer than the latest verified CI commit. GitHub CLI could not inspect latest PR checks during TASK-0008, so CI must be re-verified after push.
 
 ## Current Operating Rule
@@ -33,7 +33,7 @@ No feature work should begin unless the latest PR head has passing Backend CI or
 | ID | Task | Blocker | Required Action | Notes |
 |---|---|---|---|---|
 | WAIT-0001 | Full local backend test validation | Local Python 3.12 / pytest environment not fully provisioned | Use GitHub Actions as PR validation source or provision local Python 3.12 dependencies | Do not claim local tests pass unless they are actually run. |
-| WAIT-0002 | Latest-head CI verification | Local HEAD `04dc898e1010c8a149457a2708fb04659d91c82f` is newer than the latest verified CI commit | Re-verify GitHub Actions after push | Latest verified run is PR #1 Backend CI run #60 at `59e999b4135e393a1bb3768a11fe8ba79c18791e`; `gh` could not connect during TASK-0008. |
+| WAIT-0002 | Latest-head CI verification | Local HEAD `abfddf741f1f7c8765afd718b43e1f511377e94d` is newer than the latest verified CI commit | Re-verify GitHub Actions after push | Latest verified run is PR #1 Backend CI run #60 at `59e999b4135e393a1bb3768a11fe8ba79c18791e`; `gh` could not connect during TASK-0008. |
 
 ## Next Up
 

@@ -4,7 +4,7 @@
 
 None, unless a newer commit is pushed and CI has not completed.
 
-During TASK-0008, GitHub CLI could not connect to inspect latest-head CI. If local HEAD `04dc898e1010c8a149457a2708fb04659d91c82f` or any newer commit is pushed, manually verify Backend CI for the pushed PR head.
+During TASK-0008, GitHub CLI could not connect to inspect latest-head CI. If local HEAD `abfddf741f1f7c8765afd718b43e1f511377e94d` or any newer commit is pushed, manually verify Backend CI for the pushed PR head.
 
 For current task sequencing and manual-work blockers, use `docs/ACTIVE_TASKS.md`.
 
