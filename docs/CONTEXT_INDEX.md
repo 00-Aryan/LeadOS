@@ -55,6 +55,13 @@ Some documents are retained for traceability and may not represent current imple
 - `backend/tests/test_scoring_service.py`: Scoring behavior.
 - `backend/tests/test_scoring_router.py`: Scoring API behavior.
 
+## Release / Review / Validation Context
+
+- `docs/PR_CHECKLIST.md`: Release readiness, merge gates, docs-only checks, backend-change checks, dependency/tooling checks, and agent PR safety rules.
+- `docs/VALIDATION_COMMANDS.md`: Backend and docs validation commands.
+- `docs/DONE_CRITERIA.md`: Completion gate for any task.
+- `docs/MANUAL_ACTIONS.md`: Manual verification and external action requirements.
+
 ## CI/Tooling
 
 - `docs/CI_TROUBLESHOOTING.md`: GitHub Actions Backend CI failure diagnosis, failing-step mapping, and agent safety rules for CI repair.

@@ -21,17 +21,21 @@ GitHub Actions could not be inspected from this environment after the TASK-0006 
 
 ## TASK-0007 Local Environment Setup Update
 
-`docs/LOCAL_ENVIRONMENT.md` now exists as the local backend setup guide. The latest verified PR state is Backend CI run #60 at commit `59e999b4135e393a1bb3768a11fe8ba79c18791e`.
+`docs/LOCAL_ENVIRONMENT.md` now exists as the local backend setup guide. The latest verified PR state has since advanced to Backend CI run #65 at commit `bd79762147ac0732bc5185cad50110ad9984be7e`.
 
 ## TASK-0008 CI Troubleshooting Update
 
 `docs/CI_TROUBLESHOOTING.md` now exists as the Backend CI troubleshooting guide for failing-step diagnosis, local equivalents, and agent safety rules.
 
+## TASK-0009 PR Checklist Update
+
+`docs/PR_CHECKLIST.md` now exists as the canonical PR readiness checklist for merge gates, docs-only changes, backend changes, dependency/tooling changes, manual verification, and agent safety rules.
+
 ## Executive Summary
 
 LeadOS has a strong documentation base for product boundaries, rubrics, backend validation, and AI-agent execution. The new agent operating layer is useful and should be treated as the primary control layer for future Codex sessions.
 
-The main risk is not missing documentation, but document drift. Several older sprint, tooling, and backlog files describe earlier states: CI is now present, SQL persistence exists, scoring/audit code exists, and local validation can still be blocked by environment setup. Current verified PR validation is Backend CI run #60 at commit `59e999b4135e393a1bb3768a11fe8ba79c18791e`. Future agents should read the agent-control docs first, then treat sprint reviews and older notes as historical context unless confirmed against source code and current CI.
+The main risk is not missing documentation, but document drift. Several older sprint, tooling, and backlog files describe earlier states: CI is now present, SQL persistence exists, scoring/audit code exists, and local validation can still be blocked by environment setup. Current verified PR validation is Backend CI run #65 at commit `bd79762147ac0732bc5185cad50110ad9984be7e`. Future agents should read the agent-control docs first, then treat sprint reviews and older notes as historical context unless confirmed against source code and current CI.
 
 ## Documentation Map
 
@@ -46,8 +50,9 @@ The main risk is not missing documentation, but document drift. Several older sp
 | `docs/VALIDATION_COMMANDS.md` | Backend and docs validation commands. | Current, canonical. | P0 | Needs local environment caveat from `docs/MANUAL_ACTIONS.md`. |
 | `docs/LOCAL_ENVIRONMENT.md` | Local Python and backend validation setup guide. | Current, canonical. | P0 | Use when local validation cannot run or before provisioning backend dependencies. |
 | `docs/CI_TROUBLESHOOTING.md` | Backend CI failure diagnosis and local command mapping. | Current, canonical. | P0 | Use before changing code or tooling to repair GitHub Actions failures. |
+| `docs/PR_CHECKLIST.md` | PR readiness, merge gates, manual verification, and agent PR safety checks. | Current, canonical. | P0 | Use before marking a PR ready or recommending merge. |
 | `docs/MANUAL_ACTIONS.md` | Manual work and environment/CI verification requirements. | Current, operational. | P0 | Tracks verified CI state and local environment caveats. |
-| `docs/CHANGELOG_AGENT.md` | Latest known agent state and blockers. | Current, operational. | P0 | Records PR #1 Backend CI pass at commit `59e999b4135e393a1bb3768a11fe8ba79c18791e`, run #60. |
+| `docs/CHANGELOG_AGENT.md` | Latest known agent state and blockers. | Current, operational. | P0 | Records PR #1 Backend CI pass at commit `bd79762147ac0732bc5185cad50110ad9984be7e`, run #65. |
 | `docs/DECISIONS.md` | ADR-style project decisions. | Current, canonical. | P1 | Controls standalone scope, no scraping, no sending, deterministic-first approach. |
 | `docs/RISK_REGISTER.md` | Risk table for product and workflow risks. | Current, useful. | P1 | Important before network fetch, outreach, scoring, migrations, or CI work. |
 | `docs/FILE_OWNERSHIP.md` | Directory responsibility map. | Current, useful. | P1 | Helps agents limit edits to owned paths. |
@@ -203,7 +208,7 @@ The main risk is not missing documentation, but document drift. Several older sp
 - `docs/MIGRATIONS_PLAN.md`: Missing migration strategy for moving beyond local SQLite.
 - `docs/REPORTING_PLAN.md`: Missing canonical plan for SQL extraction/reporting work listed as a blocker.
 - `docs/SCORING_PERSISTENCE_PLAN.md`: Missing plan for score persistence and versioning.
-- `docs/PR_CHECKLIST.md` or `.github/pull_request_template.md`: Missing PR-level checklist for validation, manual work, and scope boundaries.
+- `.github/pull_request_template.md`: Missing GitHub-native PR template; `docs/PR_CHECKLIST.md` now provides the canonical checklist.
 - `docs/DOCS_MAINTENANCE.md`: Missing ownership and update rules for keeping docs current.
 
 ## Recommended Reading Order for Future Codex Sessions
@@ -232,17 +237,17 @@ The main risk is not missing documentation, but document drift. Several older sp
 
 ### Required before merge
 
-- GitHub Actions Backend CI must be green for the latest PR head commit. As of PR #1 commit `59e999b4135e393a1bb3768a11fe8ba79c18791e`, Backend CI passed in run #60 / `27554650321`.
+- GitHub Actions Backend CI must be green for the latest PR head commit. As of PR #1 commit `bd79762147ac0732bc5185cad50110ad9984be7e`, Backend CI passed in run #65 / `27563984088`.
 - Reconcile `docs/TASKS.md`, `docs/GITHUB_ISSUES_TO_CREATE.md`, `docs/TOOLING_NOTES.md`, and `docs/AUTOMATION_NOTE.md` with the current CI and implementation state.
 
 ### Can be deferred
 
-- Create dedicated migration, reporting, scoring persistence, API contract, PR checklist, and docs maintenance docs.
+- Create dedicated migration, reporting, scoring persistence, API contract, and docs maintenance docs.
 - Merge or archive redundant historical notes after the current PR is stable.
 
 ## Recommendations Before Next Implementation Task
 
-1. Add a PR checklist or template.
+1. Reconcile active implementation backlog against GitHub issues.
 2. Update stale task and tooling docs so agents do not plan from outdated state.
 3. Treat `AGENTS.md`, `docs/CONTEXT_INDEX.md`, `docs/ACTIVE_TASKS.md`, `docs/WORKFLOW.md`, `docs/DONE_CRITERIA.md`, `docs/VALIDATION_COMMANDS.md`, `docs/MANUAL_ACTIONS.md`, and `docs/CHANGELOG_AGENT.md` as the agent operating layer.
 4. Before feature work, choose one assigned task and read only the relevant domain docs plus affected source files.

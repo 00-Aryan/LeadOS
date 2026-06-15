@@ -6,6 +6,8 @@ For local Python setup, dependency installation, and common environment failures
 
 For GitHub Actions Backend CI failure diagnosis, read `docs/CI_TROUBLESHOOTING.md`.
 
+For PR readiness and merge gate checks, read `docs/PR_CHECKLIST.md`.
+
 ## Backend Setup
 
 ```bash

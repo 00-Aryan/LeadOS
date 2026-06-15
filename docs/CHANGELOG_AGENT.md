@@ -4,8 +4,8 @@
 
 - Current branch: `phase-0-product-foundation`
 - Current PR: `#1`
-- Latest known CI state: Backend CI passed on PR #1 at commit `59e999b4135e393a1bb3768a11fe8ba79c18791e`, workflow run #60.
-- Sprint 1 status: functionally fixed, Backend CI verified passing for PR #1 run #60
+- Latest known CI state: Backend CI passed on PR #1 at commit `bd79762147ac0732bc5185cad50110ad9984be7e`, workflow run #65 / `27563984088`.
+- Sprint 1 status: functionally fixed, Backend CI verified passing for PR #1 run #65
 - Sprint 2 status: functionally fixed, migrations/reporting pending
 - Next blockers: documentation drift cleanup, completion gate, migrations, scoring persistence, SQL reporting
 - Local backend tests may still fail to run on machines without Python 3.12/dependencies, but GitHub Actions is the current source of truth for PR validation.
@@ -31,3 +31,7 @@ Added local environment setup guidance so humans and agents can reproduce backen
 ## TASK-0008 CI Troubleshooting
 
 Added CI troubleshooting guidance so future agents diagnose GitHub Actions failures by failing step and avoid unrelated changes.
+
+## TASK-0009 PR Checklist
+
+Added PR checklist guidance for merge readiness, docs-only commits, backend changes, dependency/tooling changes, and agent safety rules.
