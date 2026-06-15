@@ -9,7 +9,12 @@ from app.models import Lead, LeadImportError, LeadImportRun
 class LeadRepository:
     """Data access methods for leads and import runs."""
 
-    def find_duplicate(self, db: Session, normalized_business_name: str, normalized_city: str) -> Lead | None:
+    def find_duplicate(
+        self,
+        db: Session,
+        normalized_business_name: str,
+        normalized_city: str,
+    ) -> Lead | None:
         """Return an existing lead with the same normalized name and city."""
         stmt = select(Lead).where(
             Lead.normalized_business_name == normalized_business_name,
