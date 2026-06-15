@@ -26,7 +26,11 @@ def import_leads(
 ) -> LeadImportSummary:
     """Validate, transform and persist leads from CSV content."""
     service = LeadImportService()
-    return service.import_csv_text(db, request.csv_content, source_name=request.source_name)
+    return service.import_csv_text(
+        db,
+        request.csv_content,
+        source_name=request.source_name,
+    )
 
 
 @router.get("", response_model=list[LeadOutput])
