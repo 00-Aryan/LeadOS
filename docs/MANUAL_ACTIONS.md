@@ -2,7 +2,8 @@
 
 ## Required Now
 
-None, unless a newer commit is pushed and CI has not yet completed.
+- Verify PR #1 Backend CI manually for latest head commit `2b1645c70674c530f8af462c2a180bc32baa2ac5`; GitHub Actions could not be inspected from this environment.
+- Do not start TASK-0007 or feature work until latest-head Backend CI is verified passing.
 
 For current task sequencing and manual-work blockers, use `docs/ACTIVE_TASKS.md`.
 

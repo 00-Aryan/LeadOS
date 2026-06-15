@@ -15,6 +15,10 @@ Historical/status labels were added to the highest-risk stale docs: `docs/TASKS.
 
 `docs/ACTIVE_TASKS.md` now exists as the canonical active task source. Historical task, sprint, and fix-log docs are references only.
 
+## TASK-0006A CI State Reconciliation Attempt
+
+GitHub Actions could not be inspected from this environment after the TASK-0006 push. The latest local HEAD is `2b1645c70674c530f8af462c2a180bc32baa2ac5`, which is newer than the last verified CI commit `eda102a7286e00acb6d874411e238245c1a1c65c`; PR #1 Backend CI must be manually verified before starting TASK-0007.
+
 ## Executive Summary
 
 LeadOS has a strong documentation base for product boundaries, rubrics, backend validation, and AI-agent execution. The new agent operating layer is useful and should be treated as the primary control layer for future Codex sessions.

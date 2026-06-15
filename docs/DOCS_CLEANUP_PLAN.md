@@ -14,6 +14,10 @@ Historical/status labels were added to the highest-risk stale docs. This reduces
 
 `docs/ACTIVE_TASKS.md` was created as the canonical active task source. Historical backlog, sprint review, and fix-log docs should remain references unless a task is promoted into the active index.
 
+## TASK-0006A Progress
+
+CI state reconciliation was attempted after the TASK-0006 push, but GitHub Actions could not be inspected from this environment. PR #1 Backend CI must be manually verified for latest local HEAD `2b1645c70674c530f8af462c2a180bc32baa2ac5` before TASK-0007 starts.
+
 ## Current Documentation Risk Summary
 
 - Stale implementation state: older backlog and sprint docs still describe pending work that appears partially or fully implemented.
@@ -183,16 +187,17 @@ Historical/status labels were added to the highest-risk stale docs. This reduces
 
 ## Proposed Cleanup Order
 
-1. Add `docs/LOCAL_ENVIRONMENT.md` so local Python 3.12/dependency setup is reproducible.
-2. Add `docs/CI_TROUBLESHOOTING.md` for format, lint, test, and GitHub Actions failures.
-3. Add a PR checklist or template for validation, manual work, and scope controls.
-4. Reconcile `docs/TASKS.md` against current source, tests, verified PR #1 Backend CI, and `docs/ACTIVE_TASKS.md`.
-5. Clarify current tooling in `docs/STACK.md` without changing CI or dependencies.
-6. Reconcile `docs/DATA_MODEL.md` against ORM models before migration/reporting/scoring persistence work.
-7. Mark remaining review artifacts as historical where needed, including `docs/COUNCIL_REVIEW_001.md`.
-8. Update `docs/CONTEXT_INDEX.md` to identify historical files and point future agents to canonical active sources.
-9. Update `docs/DOCS_INVENTORY.md` after cleanup so it reflects new labels and any archive decisions.
-10. Archive obsolete notes under `docs/archive/` after PR merge if the team wants a cleaner top-level docs folder.
+1. Manually verify PR #1 Backend CI for latest local HEAD `2b1645c70674c530f8af462c2a180bc32baa2ac5`.
+2. Add `docs/LOCAL_ENVIRONMENT.md` so local Python 3.12/dependency setup is reproducible.
+3. Add `docs/CI_TROUBLESHOOTING.md` for format, lint, test, and GitHub Actions failures.
+4. Add a PR checklist or template for validation, manual work, and scope controls.
+5. Reconcile `docs/TASKS.md` against current source, tests, verified PR #1 Backend CI, and `docs/ACTIVE_TASKS.md`.
+6. Clarify current tooling in `docs/STACK.md` without changing CI or dependencies.
+7. Reconcile `docs/DATA_MODEL.md` against ORM models before migration/reporting/scoring persistence work.
+8. Mark remaining review artifacts as historical where needed, including `docs/COUNCIL_REVIEW_001.md`.
+9. Update `docs/CONTEXT_INDEX.md` to identify historical files and point future agents to canonical active sources.
+10. Update `docs/DOCS_INVENTORY.md` after cleanup so it reflects new labels and any archive decisions.
+11. Archive obsolete notes under `docs/archive/` after PR merge if the team wants a cleaner top-level docs folder.
 
 ## Manual Work Required
 
@@ -220,4 +225,4 @@ The largest operational risk is that an agent reads `docs/TASKS.md`, `docs/GITHU
 
 ## Next Recommended Task
 
-TASK-0007: Add local environment setup doc.
+Manual CI verification for PR #1 latest head, then TASK-0007: Add local environment setup doc.

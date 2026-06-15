@@ -19,3 +19,7 @@ Added historical/status labels to highest-risk stale docs so future agents do no
 ## TASK-0006 Canonical Active Task Index
 
 Created `docs/ACTIVE_TASKS.md` as the canonical active task source. Historical backlog, sprint review, and fix-log docs remain references only.
+
+## TASK-0006A CI State Reconciliation Attempt
+
+GitHub Actions could not be inspected from this environment after the TASK-0006 push. Latest local HEAD is `2b1645c70674c530f8af462c2a180bc32baa2ac5`; PR #1 Backend CI must be manually verified for that head before starting TASK-0007 or feature work.
