@@ -16,7 +16,11 @@ def test_repository_adds_and_finds_duplicate(db_session) -> None:
     )
     db_session.commit()
 
-    duplicate = repository.find_duplicate(db_session, "healthy smile clinic", "ranchi")
+    duplicate = repository.find_duplicate(
+        db_session,
+        "healthy smile clinic",
+        "ranchi",
+    )
 
     assert lead.id is not None
     assert duplicate is not None
