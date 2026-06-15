@@ -1,22 +1,24 @@
-"""Tests for lead API routes."""
-
-from fastapi.testclient import TestClient
-
-from app.main import app
+"""Lead router tests."""
 
 
-def test_lead_import_route_returns_summary() -> None:
-    client = TestClient(app)
+def test_lead_import_route_persists_valid_lead(client) -> None:
     csv_content = (
         "business_name,category,city,state,phone,website,rating,review_count,address,source_url\n"
-        "Ranchi Dental Care,Dentist,Ranchi,Jharkhand,+91-9876543210,https://example.com,4.5,128,Main Road,https://maps.example/1\n"
+        "Healthy Smile Clinic,Dentist,Ranchi,Jharkhand,+91 98765 43210,https://example.com,4.6,150,Main Road,source\n"
     )
 
-    response = client.post("/leads/import", json={"csv_content": csv_content})
+    response = client.post("/leads/import", json={"csv_content": csv_content, "source_name": "test.csv"})
 
     assert response.status_code == 200
     payload = response.json()
-    assert payload["total_rows"] == 1
-    assert payload["valid_rows"] == 1
-    assert payload["invalid_rows"] == 0
-    assert payload["accepted"][0]["business_name"] == "Ranchi Dental Care"
+    assert payload["valid_records"] == 1
+    assert payload["imported_ids"]
+
+    list_response = client.get("/leads")
+    assert list_response.status_code == 200
+    assert list_response.json()[0]["business_name"] == "Healthy Smile Clinic"
+
+
+def test_lead_import_route_rejects_invalid_payload(client) -> None:
+    response = client.post("/leads/import", json={"csv_content": ""})
+    assert response.status_code == 422
