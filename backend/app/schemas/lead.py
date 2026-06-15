@@ -30,7 +30,11 @@ class LeadOutput(LeadInput):
     updated_at: datetime
 
 
-class LeadImportErrorItem(BaseModel):
+class LeadImportValidRow(LeadInput):
+    """Validated and normalized CSV lead row returned in import results."""
+
+
+class LeadImportInvalidRow(BaseModel):
     """Rejected CSV row information."""
 
     row_number: int
@@ -41,10 +45,17 @@ class LeadImportErrorItem(BaseModel):
 class LeadImportSummary(BaseModel):
     """CSV import result summary."""
 
+    total_rows: int
+    valid_rows: int
+    invalid_rows: int
+    duplicate_rows: int = 0
+
+
+class LeadImportResult(BaseModel):
+    """Structured CSV import result."""
+
+    summary: LeadImportSummary
+    valid_rows: list[LeadImportValidRow]
+    invalid_rows: list[LeadImportInvalidRow]
     import_run_id: int | None = None
-    total_records: int
-    valid_records: int
-    invalid_records: int
-    duplicate_records: int
     imported_ids: list[int]
-    errors: list[LeadImportErrorItem]

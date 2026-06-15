@@ -4,10 +4,10 @@
 
 - Current branch: `phase-0-product-foundation`
 - Current PR: `#1`
-- Latest known CI state: Backend CI passed on PR #1 at commit `8e5f2a5c1a48884c110ccf8ed53027d72f183416`, workflow run #67 / `27564758959`.
-- Sprint 1 status: functionally fixed, Backend CI verified passing for PR #1 run #67
+- Latest known CI state: Backend CI passed on PR #1 at commit `ed6050567c33c50557b994ca263e82a555fe4dd8`, workflow run #69 / `27565986172`.
+- Sprint 1 status: functionally fixed, Backend CI verified passing for PR #1 run #69
 - Sprint 2 status: functionally fixed, migrations/reporting pending
-- Next blockers: manual GitHub issue verification before TASK-0203, local backend environment provisioning if local tests are needed, migrations, scoring persistence, SQL reporting
+- Next blockers: TASK-0203 validation, local backend environment provisioning, migrations, scoring persistence, SQL reporting
 - Local backend tests may still fail to run on machines without Python 3.12/dependencies, but GitHub Actions is the current source of truth for PR validation.
 
 Do not claim CI passes unless the relevant GitHub Actions run has been verified.
@@ -39,3 +39,7 @@ Added PR checklist guidance for merge readiness, docs-only commits, backend chan
 ## TASK-0010 Backlog Reconciliation
 
 Added backlog reconciliation guidance to identify the next safe implementation task after Phase 0 hardening and PR-readiness controls.
+
+## TASK-0203 CSV Lead Import Validator
+
+Implemented deterministic CSV lead import validation with explicit schema, row-level invalid reasons, partial import support, API route, and tests. Local backend validation is pending because `ruff` is not installed and pyenv Python 3.12 is missing in this environment.
