@@ -17,6 +17,14 @@ make install
 
 ## Backend Checks
 
+One-command backend gate:
+
+```bash
+cd backend && make check
+```
+
+Individual backend gate steps:
+
 ```bash
 cd backend
 make format-check

@@ -4,11 +4,13 @@
 > This document may describe earlier implementation state, task planning, or validation status.
 > For current agent instructions and repository state, read `AGENTS.md`, `docs/CONTEXT_INDEX.md`, and `docs/CHANGELOG_AGENT.md` first.
 >
-> **CI note:** PR #1 Backend CI was externally verified as passing at commit `eda102a7286e00acb6d874411e238245c1a1c65c`, run #54 (`27545766287`). If newer commits exist, verify CI again before merging.
+> **CI note:** PR #1 Backend CI was externally verified as passing at commit `64f116cc77758de2e3e51792fe4b898cda2dd9e1`, run #76 (`27574177028`). If newer commits exist, verify CI again before merging.
+>
+> **Completion gate:** See `docs/SPRINT_1_2_COMPLETION_GATE.md` for TASK-0105 final Sprint 1 and Sprint 2 gate evidence.
 
 ## Status
 
-Sprint 1 is now complete in this fix pass.
+Sprint 1 is complete for the backend foundation gate.
 
 ## Goal
 
@@ -41,10 +43,13 @@ backend/.python-version
 ## Validation
 
 ```text
-10 tests passed locally in the fixed package.
+Use the current backend gate:
+
+cd backend && make check
+
+The latest verified CI baseline for this review is PR #1 Backend CI success at commit `64f116cc77758de2e3e51792fe4b898cda2dd9e1`, run #76 / `27574177028`.
 ```
 
 ## Remaining non-blocking improvements
 
-- Add GitHub Actions CI.
 - Add OpenAPI examples for the import endpoint.

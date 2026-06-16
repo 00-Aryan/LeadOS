@@ -12,9 +12,9 @@ This checklist applies to PR #1 and future LeadOS PRs unless a task explicitly d
 
 - PR: #1
 - Branch: `phase-0-product-foundation`
-- Latest verified head commit: `bd79762147ac0732bc5185cad50110ad9984be7e`
-- Latest verified CI run: Backend CI success, run #65 / `27563984088`
-- Current merge posture: Latest verified CI matches current local `HEAD`. The PR still requires normal review, a current PR description, and re-verification if any newer commit is pushed.
+- Latest verified head commit: `64f116cc77758de2e3e51792fe4b898cda2dd9e1`
+- Latest verified CI run: Backend CI success, run #76 / `27574177028`
+- Current merge posture: Latest verified CI matches current local `HEAD`, but the worktree has uncommitted changes. The PR requires normal review, a current PR description, and re-verification if any newer commit is pushed.
 
 ## Required Before Marking Ready
 
@@ -29,6 +29,14 @@ This checklist applies to PR #1 and future LeadOS PRs unless a task explicitly d
 - [ ] Relevant context docs are updated.
 - [ ] Stale/historical docs are not used as active task sources.
 - [ ] PR description is updated if PR scope changed materially.
+
+## Sprint 1 and Sprint 2 Gate Checklist
+
+- [ ] `docs/SPRINT_1_2_COMPLETION_GATE.md` reflects final Sprint 1 and Sprint 2 status.
+- [ ] `cd backend && make check` passes locally or the exact local blocker is recorded.
+- [ ] `git diff --check` passes.
+- [ ] Backend CI is re-verified after any new pushed commit.
+- [ ] Sprint 3 remains deferred until TASK-0105 passes.
 
 ## Required Before Merge
 
