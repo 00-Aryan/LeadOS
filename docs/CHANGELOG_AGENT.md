@@ -4,10 +4,10 @@
 
 - Current branch: `phase-0-product-foundation`
 - Current PR: `#1`
-- Latest known CI state: Backend CI passed on PR #1 at commit `244b050ed6fdd29cc00c0d597ec2de746ddd3091`.
+- Latest known CI state: Backend CI passed on PR #1 at commit `8ac976d30da41181328c64884835f6ac4461c81a`.
 - Sprint 1 status: complete for TASK-0105 gate.
 - Sprint 2 status: complete for TASK-0105 gate; migrations/reporting remain deferred.
-- Next blockers: TASK-0304 local validation tooling, fresh Backend CI after the TASK-0304 push, migrations, scoring persistence, SQL reporting
+- Next blockers: TASK-0402/TASK-0403 local validation tooling, fresh Backend CI after the TASK-0402/TASK-0403 push, scoring persistence, migrations, SQL reporting
 - Local backend tests may still fail to run on machines without Python 3.12/dependencies, but GitHub Actions is the current source of truth for PR validation.
 
 Do not claim CI passes unless the relevant GitHub Actions run has been verified.
@@ -55,3 +55,7 @@ Implemented deterministic provided-HTML audit checks for title, meta description
 ## TASK-0304 Audit Persistence Repository
 
 Added an audit repository for persisting deterministic audit results linked to existing leads. The repository stores `lead_id`, `requested_url`, `fetch_status`, and JSON-serializable audit output, and supports listing by lead plus latest-audit lookup without committing transactions, fetching websites, scoring, or adding migrations.
+
+## TASK-0402/TASK-0403 Explainable Scoring
+
+Strengthened deterministic scoring so it normalizes both legacy audit check names and newer presence-audit keys before scoring digital gaps and contactability. Expanded scoring tests for strong and weak digital presence, missing/blocked/failed audits, contactability gaps, commercial category fit, category caps, priority transitions, reason summaries, and Pydantic serialization.

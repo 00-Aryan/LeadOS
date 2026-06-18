@@ -1,6 +1,6 @@
 """Deterministic, explainable lead scoring service."""
 
-from app.schemas.audit import WebsiteAuditResult
+from app.schemas.audit import WebsiteAuditResult, WebsitePresenceAuditResult
 from app.schemas.lead import LeadInput
 from app.schemas.score import LeadScoreResult, ScoreBreakdown
 
@@ -16,6 +16,28 @@ HIGH_VALUE_CATEGORIES = {
     "real estate",
     "interior designer",
 }
+AuditInput = WebsiteAuditResult | WebsitePresenceAuditResult
+CHECK_ALIASES = {
+    "title": ("title", "title_exists"),
+    "meta_description": ("meta_description", "meta_description_exists"),
+    "phone_link": ("phone_link", "phone_detected", "call_link_detected"),
+    "whatsapp_link": ("whatsapp_link", "whatsapp_detected"),
+    "booking_signal": ("booking_signal", "booking_link_detected"),
+    "contact_signal": ("contact_signal", "contact_signal_detected"),
+    "social_link": ("social_link", "social_link_detected"),
+    "schema_markup": ("schema_markup", "schema_markup_detected"),
+    "https": ("https", "https_enabled"),
+    "website_loads": ("website_loads",),
+}
+WEAK_DIGITAL_CHECKS = (
+    "meta_description",
+    "phone_link",
+    "whatsapp_link",
+    "booking_signal",
+    "contact_signal",
+    "social_link",
+    "schema_markup",
+)
 
 
 def describe_service() -> str:
@@ -23,7 +45,7 @@ def describe_service() -> str:
     return "Converts lead and audit data into an explainable opportunity score."
 
 
-def score_lead(lead: LeadInput, audit: WebsiteAuditResult | None = None) -> LeadScoreResult:
+def score_lead(lead: LeadInput, audit: AuditInput | None = None) -> LeadScoreResult:
     """Score one lead using deterministic rules.
 
     The score is an opportunity score, not a promise of conversion. Missing data
@@ -125,7 +147,7 @@ def _score_business_strength(
 
 
 def _score_digital_gap(
-    audit: WebsiteAuditResult | None,
+    audit: AuditInput | None,
     positive_signals: list[str],
     risk_flags: list[str],
     missing_data: list[str],
@@ -135,38 +157,39 @@ def _score_digital_gap(
         risk_flags.append("audit missing")
         return 8
 
-    checks = {check.name: check.status for check in audit.checks}
+    checks = _normalized_audit_checks(audit)
+    fetch_status = _audit_fetch_status(audit)
     score = 0
 
-    if audit.fetch.status == "blocked":
+    if fetch_status == "blocked":
         risk_flags.append("website fetch blocked")
         return 5
-    if audit.fetch.status == "failed":
+    if fetch_status == "failed":
         risk_flags.append("website fetch failed")
         return 10
 
-    if checks.get("website_loads") == "true":
+    if checks.get("website_loads") == "true" or isinstance(audit, WebsitePresenceAuditResult):
         positive_signals.append("website loads")
     else:
         score += 10
         positive_signals.append("website unavailable creates digital gap")
 
-    missing_or_weak_checks = [
-        "meta_description_exists",
-        "phone_detected",
-        "whatsapp_detected",
-        "booking_link_detected",
-        "contact_signal_detected",
-        "social_link_detected",
-        "schema_markup_detected",
-    ]
-    for check_name in missing_or_weak_checks:
+    for check_name in WEAK_DIGITAL_CHECKS:
         if checks.get(check_name) == "false":
             score += 3
+        elif checks.get(check_name) == "unknown":
+            missing_data.append(f"audit:{check_name}")
 
-    if checks.get("https_enabled") == "false":
+    if checks.get("title") == "false":
+        score += 2
+    elif checks.get("title") == "unknown":
+        missing_data.append("audit:title")
+
+    if checks.get("https") == "false":
         score += 4
         risk_flags.append("website lacks https")
+    elif checks.get("https") == "unknown":
+        missing_data.append("audit:https")
 
     if score >= 15:
         positive_signals.append("clear digital improvement gap")
@@ -176,7 +199,7 @@ def _score_digital_gap(
 
 def _score_contactability(
     lead: LeadInput,
-    audit: WebsiteAuditResult | None,
+    audit: AuditInput | None,
     positive_signals: list[str],
     missing_data: list[str],
 ) -> int:
@@ -201,11 +224,18 @@ def _score_contactability(
         missing_data.append("address")
 
     if audit is not None:
-        checks = {check.name: check.status for check in audit.checks}
-        if checks.get("contact_signal_detected") == "true":
+        checks = _normalized_audit_checks(audit)
+        if checks.get("contact_signal") == "true":
             score += 3
-        if checks.get("whatsapp_detected") == "true" or checks.get("phone_detected") == "true":
+            positive_signals.append("website contact path available")
+        elif checks.get("contact_signal") == "unknown":
+            missing_data.append("audit:contact_signal")
+
+        if checks.get("whatsapp_link") == "true" or checks.get("phone_link") == "true":
             score += 2
+            positive_signals.append("website direct contact link available")
+        elif checks.get("whatsapp_link") == "unknown" and checks.get("phone_link") == "unknown":
+            missing_data.append("audit:direct_contact_link")
 
     return min(score, 20)
 
@@ -273,3 +303,24 @@ def _build_reason_summary(
         f"Lead scored {total_score} with priority '{priority_label}' because of "
         f"{signal_summary}. Risk context: {risk_summary}."
     )
+
+
+def _normalized_audit_checks(audit: AuditInput) -> dict[str, str]:
+    raw_checks = {
+        getattr(check, "key", getattr(check, "name", "")): check.status for check in audit.checks
+    }
+    normalized: dict[str, str] = {}
+    for canonical_name, aliases in CHECK_ALIASES.items():
+        for alias in aliases:
+            if alias in raw_checks:
+                normalized[canonical_name] = raw_checks[alias]
+                break
+    return normalized
+
+
+def _audit_fetch_status(audit: AuditInput) -> str:
+    fetch = getattr(audit, "fetch", None)
+    if fetch is not None:
+        return fetch.status
+    fetch_status = getattr(audit, "fetch_status", None)
+    return fetch_status or "success"
