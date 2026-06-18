@@ -35,3 +35,20 @@ class WebsiteAuditResult(BaseModel):
     requested_url: str
     fetch: WebsiteFetchResult
     checks: list[AuditCheck] = Field(default_factory=list)
+
+
+class WebsitePresenceAuditCheck(BaseModel):
+    """One deterministic website presence check from provided HTML."""
+
+    key: str
+    status: CheckStatus
+    label: str
+    evidence: str | None = None
+
+
+class WebsitePresenceAuditResult(BaseModel):
+    """Deterministic website audit output from already available HTML."""
+
+    website_url: str | None = None
+    fetch_status: str | None = None
+    checks: list[WebsitePresenceAuditCheck] = Field(default_factory=list)

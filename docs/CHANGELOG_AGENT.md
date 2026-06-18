@@ -4,10 +4,10 @@
 
 - Current branch: `phase-0-product-foundation`
 - Current PR: `#1`
-- Latest known CI state: Backend CI passed on PR #1 at commit `64f116cc77758de2e3e51792fe4b898cda2dd9e1`, workflow run #76 / `27574177028`.
-- Sprint 1 status: complete for TASK-0105 gate pending local validation of current worktree.
-- Sprint 2 status: complete for TASK-0105 gate pending local validation of current worktree; migrations/reporting remain deferred.
-- Next blockers: TASK-0105 validation, fresh Backend CI after any new push, migrations, scoring persistence, SQL reporting
+- Latest known CI state: Backend CI passed on PR #1 at commit `daccb2cc9f75a268f2d394557a609435fa96bfba`, workflow run #78 / `27631431957`.
+- Sprint 1 status: complete for TASK-0105 gate.
+- Sprint 2 status: complete for TASK-0105 gate; migrations/reporting remain deferred.
+- Next blockers: TASK-0303 local validation tooling, fresh Backend CI after the TASK-0303 push, migrations, scoring persistence, SQL reporting
 - Local backend tests may still fail to run on machines without Python 3.12/dependencies, but GitHub Actions is the current source of truth for PR validation.
 
 Do not claim CI passes unless the relevant GitHub Actions run has been verified.
@@ -47,3 +47,7 @@ Implemented deterministic CSV lead import validation with explicit schema, row-l
 ## TASK-0105 Sprint 1 and Sprint 2 Completion Gate
 
 Created `docs/SPRINT_1_2_COMPLETION_GATE.md` to map each Sprint 1 and Sprint 2 acceptance check to concrete backend tests and validation commands. Local backend validation is blocked by missing `ruff` and missing pyenv Python `3.12`; GitHub issue verification is blocked by lack of `api.github.com` connectivity; `git diff --check` passed. Sprint 3 remains deferred until the gate passes in a provisioned environment or Backend CI is re-verified after the TASK-0105 changes are pushed.
+
+## TASK-0303 Deterministic Audit Checks
+
+Implemented deterministic provided-HTML audit checks for title, meta description, phone link, WhatsApp link, booking signal, contact signal, social link, schema markup, and HTTPS. The new check surface uses `true`, `false`, and `unknown` statuses with concise evidence. Local `make format-check` and `make lint` are blocked because `ruff` is not installed; local `make test` is blocked because pyenv Python `3.12` is not installed. `git diff --check` passed, and fresh Backend CI is required after push.
