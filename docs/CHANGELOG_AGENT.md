@@ -4,10 +4,10 @@
 
 - Current branch: `phase-0-product-foundation`
 - Current PR: `#1`
-- Latest known CI state: Backend CI passed on PR #1 at commit `1db856783a2620fc963c12b79a1d5adba76dde88`.
+- Latest known CI state: Backend CI passed on PR #1 at commit `6fd06479e370e21e3583b557536564ab1fce6bc4`.
 - Sprint 1 status: complete for TASK-0105 gate.
 - Sprint 2 status: complete for TASK-0105 gate; migrations/reporting remain deferred.
-- Next blockers: fresh Backend CI after the TASK-0207 push, migrations, SQL reporting
+- Next blockers: fresh Backend CI after the TASK-0206 push, migrations, BI export/dashboard preparation
 - Local backend tests may still fail to run on machines without Python 3.12/dependencies, but GitHub Actions is the current source of truth for PR validation.
 
 Do not claim CI passes unless the relevant GitHub Actions run has been verified.
@@ -63,3 +63,11 @@ Strengthened deterministic scoring so it normalizes both legacy audit check name
 ## TASK-0207 Scoring Persistence Repository
 
 Added a dedicated score repository for persisting deterministic `LeadScore` results linked to existing leads. The repository stores scoring version, total score, category JSON, priority, confidence, reason summary, positive signals, risk flags, and missing data without committing transactions, running scoring, fetching audit data, reporting, adding dependencies, or adding migrations.
+
+## TASK-AGENTS-DEDUP Agent Operating Instructions Repair
+
+Deduplicated `AGENTS.md` into one clean operating instruction file while preserving repository state checks, scoped commit rules, hallucination prevention, local validation fallback, hard constraints, backend validation commands, and final reporting requirements.
+
+## TASK-0206 SQL Reporting Foundation
+
+Added a read-only SQL-backed reporting foundation with explicit Pydantic row schemas, a report repository, and repository tests for leads by city/category, missing websites, high-review weak presence, manual review, score distribution, import quality, and missing-data reports. The reporting repository reads persisted `Lead`, `LeadAudit`, `LeadScore`, `LeadImportRun`, and `LeadImportError` rows without dashboards, BI export, external API calls, AI analytics, outreach logic, migrations, scoring rule changes, audit rule changes, dependency changes, or CI changes.

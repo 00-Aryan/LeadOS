@@ -10,10 +10,10 @@ Historical files such as `docs/TASKS.md`, `docs/GITHUB_ISSUES_TO_CREATE.md`, `do
 
 - PR: #1
 - Branch: phase-0-product-foundation
-- Latest verified CI: Backend CI passed at commit `1db856783a2620fc963c12b79a1d5adba76dde88`
+- Latest verified CI: Backend CI passed at commit `6fd06479e370e21e3583b557536564ab1fce6bc4`
 - Local validation caveat: local tests may fail to run on machines without Python 3.12 and backend dependencies; GitHub Actions is current PR validation source of truth.
-- Latest local HEAD: `1db856783a2620fc963c12b79a1d5adba76dde88`
-- Current-head CI status: Current local HEAD matches the latest verified CI commit. The worktree has uncommitted changes for TASK-0207, so any pushed commit must receive fresh Backend CI verification.
+- Latest local HEAD before TASK-0206 edits: `6fd06479e370e21e3583b557536564ab1fce6bc4`
+- Current-head CI status: Current local HEAD matched the latest verified CI commit before TASK-0206 edits. Any pushed TASK-0206 commit must receive fresh Backend CI verification.
 
 ## Current Operating Rule
 
@@ -34,20 +34,22 @@ No feature work should begin unless the latest PR head has passing Backend CI or
 | TASK-0303 | Build deterministic audit checks | Backend implementation | Complete pending review | GitHub issue #4 | Adds provided-HTML audit checks with `true` / `false` / `unknown` status. Backend CI later verified at commit `244b050ed6fdd29cc00c0d597ec2de746ddd3091`. |
 | TASK-0304 | Add audit persistence repository | Backend implementation | Complete pending review | GitHub issue #27 | Added repository methods for persisting and retrieving deterministic audit results. Backend CI later verified at commit `8ac976d30da41181328c64884835f6ac4461c81a`. |
 | TASK-0402/TASK-0403 | Strengthen explainable scoring function and scoring test cases | Backend implementation | Complete | User-assigned task | Backend CI verified at commit `1db856783a2620fc963c12b79a1d5adba76dde88`. |
-| TASK-0207 | Add scoring persistence repository | Backend implementation | In progress | GitHub issue #26 | Adds a dedicated repository for persisted score outputs without changing scoring rules, reporting, outreach, AI, dependencies, CI, or migrations. |
+| TASK-0207 | Add scoring persistence repository | Backend implementation | Complete | GitHub issue #26 | Backend CI verified at commit `90a674aae2ad13a68d5aaf2f7e374ffbf66fd568`. |
+| TASK-AGENTS-DEDUP | Deduplicate agent operating instructions | Documentation/repair | Complete | User-assigned task | AGENTS.md repair completed at commit `6fd06479e370e21e3583b557536564ab1fce6bc4`. |
+| TASK-0206 | Add SQL extraction/reporting foundation | Backend implementation | In progress | GitHub issue #24 | Adds read-only SQL-backed reporting schemas, repository queries, and tests without dashboards, BI export, migrations, scoring rule changes, audit rule changes, or dependencies. |
 
 ## Blocked / Waiting
 
 | ID | Task | Blocker | Required Action | Notes |
 |---|---|---|---|---|
 | WAIT-0001 | Full local backend test validation | Local Python 3.12 / pytest environment not fully provisioned | Use GitHub Actions as PR validation source or provision local Python 3.12 dependencies | Do not claim local tests pass unless they are actually run. |
-| WAIT-0004 | Fresh CI after TASK-0207 push | TASK-0207 changes are newer than the verified baseline until pushed and checked | Verify Backend CI after any new pushed commit | Do not start TASK-0206 from unverified pushed code. |
+| WAIT-0005 | Fresh CI after TASK-0206 push | TASK-0206 changes are newer than the verified baseline until pushed and checked | Verify Backend CI after any new pushed commit | Do not start BI export or dashboard preparation from unverified TASK-0206 code. |
 
 ## Next Up
 
 | ID | Task | Type | Why Next | Acceptance Criteria |
 |---|---|---|---|---|
-| TASK-0206 | Add SQL extraction/reporting foundation | Backend implementation | Only after TASK-0207 is committed, pushed, and Backend CI is green | SQL reporting should use persisted audit and score outputs | Do not start until scoring persistence verification is complete. |
+| BI export or dashboard preparation | Reporting surface planning | Backend implementation | Only after TASK-0206 is committed, pushed, and Backend CI is green | Any surface should consume read-only report outputs | Do not start until TASK-0206 verification is complete. |
 
 ## Deferred
 
