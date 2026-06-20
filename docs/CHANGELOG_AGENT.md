@@ -4,10 +4,10 @@
 
 - Current branch: `phase-0-product-foundation`
 - Current PR: `#1`
-- Latest known CI state: Backend CI passed on PR #1 at commit `8ac976d30da41181328c64884835f6ac4461c81a`.
+- Latest known CI state: Backend CI passed on PR #1 at commit `1db856783a2620fc963c12b79a1d5adba76dde88`.
 - Sprint 1 status: complete for TASK-0105 gate.
 - Sprint 2 status: complete for TASK-0105 gate; migrations/reporting remain deferred.
-- Next blockers: TASK-0402/TASK-0403 local validation tooling, fresh Backend CI after the TASK-0402/TASK-0403 push, scoring persistence, migrations, SQL reporting
+- Next blockers: fresh Backend CI after the TASK-0207 push, migrations, SQL reporting
 - Local backend tests may still fail to run on machines without Python 3.12/dependencies, but GitHub Actions is the current source of truth for PR validation.
 
 Do not claim CI passes unless the relevant GitHub Actions run has been verified.
@@ -59,3 +59,7 @@ Added an audit repository for persisting deterministic audit results linked to e
 ## TASK-0402/TASK-0403 Explainable Scoring
 
 Strengthened deterministic scoring so it normalizes both legacy audit check names and newer presence-audit keys before scoring digital gaps and contactability. Expanded scoring tests for strong and weak digital presence, missing/blocked/failed audits, contactability gaps, commercial category fit, category caps, priority transitions, reason summaries, and Pydantic serialization.
+
+## TASK-0207 Scoring Persistence Repository
+
+Added a dedicated score repository for persisting deterministic `LeadScore` results linked to existing leads. The repository stores scoring version, total score, category JSON, priority, confidence, reason summary, positive signals, risk flags, and missing data without committing transactions, running scoring, fetching audit data, reporting, adding dependencies, or adding migrations.

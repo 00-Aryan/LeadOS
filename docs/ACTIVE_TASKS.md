@@ -10,10 +10,10 @@ Historical files such as `docs/TASKS.md`, `docs/GITHUB_ISSUES_TO_CREATE.md`, `do
 
 - PR: #1
 - Branch: phase-0-product-foundation
-- Latest verified CI: Backend CI passed at commit `8ac976d30da41181328c64884835f6ac4461c81a`
+- Latest verified CI: Backend CI passed at commit `1db856783a2620fc963c12b79a1d5adba76dde88`
 - Local validation caveat: local tests may fail to run on machines without Python 3.12 and backend dependencies; GitHub Actions is current PR validation source of truth.
-- Latest local HEAD: `8ac976d30da41181328c64884835f6ac4461c81a`
-- Current-head CI status: Current local HEAD matches the latest verified CI commit. The worktree has uncommitted changes, so any pushed commit must receive fresh Backend CI verification.
+- Latest local HEAD: `1db856783a2620fc963c12b79a1d5adba76dde88`
+- Current-head CI status: Current local HEAD matches the latest verified CI commit. The worktree has uncommitted changes for TASK-0207, so any pushed commit must receive fresh Backend CI verification.
 
 ## Current Operating Rule
 
@@ -33,20 +33,21 @@ No feature work should begin unless the latest PR head has passing Backend CI or
 | TASK-0105 | Verify Sprint 1 and Sprint 2 completion gate | Documentation/QA gate | Complete pending review | GitHub issue #25 | Created Sprint 1 and Sprint 2 completion gate. Backend CI later verified at commit `daccb2cc9f75a268f2d394557a609435fa96bfba`. |
 | TASK-0303 | Build deterministic audit checks | Backend implementation | Complete pending review | GitHub issue #4 | Adds provided-HTML audit checks with `true` / `false` / `unknown` status. Backend CI later verified at commit `244b050ed6fdd29cc00c0d597ec2de746ddd3091`. |
 | TASK-0304 | Add audit persistence repository | Backend implementation | Complete pending review | GitHub issue #27 | Added repository methods for persisting and retrieving deterministic audit results. Backend CI later verified at commit `8ac976d30da41181328c64884835f6ac4461c81a`. |
-| TASK-0402/TASK-0403 | Strengthen explainable scoring function and scoring test cases | Backend implementation | In progress | User-assigned task | Strengthens deterministic scoring against lead and audit facts without persistence, reporting, outreach, BI, AI, or integrations. |
+| TASK-0402/TASK-0403 | Strengthen explainable scoring function and scoring test cases | Backend implementation | Complete | User-assigned task | Backend CI verified at commit `1db856783a2620fc963c12b79a1d5adba76dde88`. |
+| TASK-0207 | Add scoring persistence repository | Backend implementation | In progress | GitHub issue #26 | Adds a dedicated repository for persisted score outputs without changing scoring rules, reporting, outreach, AI, dependencies, CI, or migrations. |
 
 ## Blocked / Waiting
 
 | ID | Task | Blocker | Required Action | Notes |
 |---|---|---|---|---|
 | WAIT-0001 | Full local backend test validation | Local Python 3.12 / pytest environment not fully provisioned | Use GitHub Actions as PR validation source or provision local Python 3.12 dependencies | Do not claim local tests pass unless they are actually run. |
-| WAIT-0004 | Fresh CI after TASK-0402/TASK-0403 push | TASK-0402/TASK-0403 changes are newer than the verified baseline until pushed and checked | Verify Backend CI after any new pushed commit | Do not start TASK-0207 from unverified pushed code. |
+| WAIT-0004 | Fresh CI after TASK-0207 push | TASK-0207 changes are newer than the verified baseline until pushed and checked | Verify Backend CI after any new pushed commit | Do not start TASK-0206 from unverified pushed code. |
 
 ## Next Up
 
 | ID | Task | Type | Why Next | Acceptance Criteria |
 |---|---|---|---|---|
-| TASK-0207 | Add scoring persistence repository | Backend implementation | Only after TASK-0402/TASK-0403 is committed, pushed, and Backend CI is green | Dedicated persistence task for score outputs | Do not start until scoring verification is complete. |
+| TASK-0206 | Add SQL extraction/reporting foundation | Backend implementation | Only after TASK-0207 is committed, pushed, and Backend CI is green | SQL reporting should use persisted audit and score outputs | Do not start until scoring persistence verification is complete. |
 
 ## Deferred
 
@@ -54,7 +55,7 @@ No feature work should begin unless the latest PR head has passing Backend CI or
 |---|---|---|---|
 | DEF-0001 | Alembic migrations | Requires dedicated database migration planning. | Local/CI validation and data model reconciliation are complete. |
 | DEF-0002 | SQL reporting service | Reporting scope should follow task/backlog reconciliation. | Active implementation backlog is reconciled. |
-| DEF-0003 | Scoring persistence repository | Needs persistence/versioning plan and migration strategy. | Scoring persistence plan and migrations are defined. |
+| DEF-0003 | Scoring persistence migrations | Migrations are excluded from TASK-0207 scope. | A dedicated migration task is assigned. |
 | DEF-0004 | Audit persistence repository | Needs persistence plan and migration strategy. | Audit persistence plan and migrations are defined. |
 | DEF-0005 | Sprint 3 implementation | TASK-0105 completion gate must pass first. | Sprint 1 and Sprint 2 gate is complete and latest Backend CI is verified green after any new push. |
 | DEF-0006 | Deployment | Out of MVP cleanup scope. | Production readiness planning begins. |

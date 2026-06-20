@@ -2,9 +2,9 @@
 
 ## Required Now
 
-Verify Backend CI after the TASK-0402/TASK-0403 commit is pushed.
+Provision the local backend validation tools and rerun TASK-0207 validation.
 
-As of TASK-0402/TASK-0403 start, PR #1 Backend CI is verified passing at commit `8ac976d30da41181328c64884835f6ac4461c81a`. Local HEAD matched that commit before TASK-0402/TASK-0403 edits. Any pushed TASK-0402/TASK-0403 commit must receive fresh Backend CI verification before TASK-0207 starts.
+As of TASK-0207 start, PR #1 Backend CI is verified passing at commit `1db856783a2620fc963c12b79a1d5adba76dde88`. Local HEAD matched that commit before TASK-0207 edits. TASK-0207 has uncommitted local changes because required local validation is blocked.
 
 For current task sequencing and manual-work blockers, use `docs/ACTIVE_TASKS.md`.
 
@@ -12,30 +12,29 @@ For current task sequencing and manual-work blockers, use `docs/ACTIVE_TASKS.md`
 
 GitHub Actions Backend CI must be green for the latest PR head commit.
 
-As of PR #1 commit `8ac976d30da41181328c64884835f6ac4461c81a`, Backend CI passed.
+As of PR #1 commit `1db856783a2620fc963c12b79a1d5adba76dde88`, Backend CI passed.
 
 Local backend tests may still fail to run on machines without Python 3.12 and backend dependencies installed; GitHub Actions is the current source of truth for PR validation.
 
 ## Required Before Next Implementation
 
-Complete TASK-0402/TASK-0403 and verify:
+Complete TASK-0207 and verify:
 
 ```bash
 cd backend && make check
 cd .. && git diff --check
 ```
 
-Then verify Backend CI after the TASK-0402/TASK-0403 commit is pushed.
+Then commit and push TASK-0207, and verify Backend CI for that pushed commit.
 
 Current local blocker:
 
 - `make format-check` and `make lint` cannot run because `ruff` is not installed.
 - `make test` cannot run because pyenv Python `3.12` is not installed for `backend/.python-version`.
-- Supplemental Python 3.11.9 cannot run pytest because `pytest` is not installed there.
-- `gh issue list --limit 50` cannot verify remaining GitHub issue coverage because this environment cannot connect to `api.github.com`.
-- `git diff --check` passed locally.
+- `PYTHONPATH=. python3 -m pytest` cannot run because the system Python 3.12.3 does not have `pytest` installed.
+- `git diff --check` passed locally for TASK-0207.
 
-Before TASK-0207 starts, verify Backend CI is green for the TASK-0402/TASK-0403 commit.
+Before TASK-0206 starts, verify Backend CI is green for the TASK-0207 commit.
 
 ## Required Before Production
 
