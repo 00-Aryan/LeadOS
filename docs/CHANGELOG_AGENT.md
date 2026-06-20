@@ -4,10 +4,10 @@
 
 - Current branch: `phase-0-product-foundation`
 - Current PR: `#1`
-- Latest known CI state: Backend CI passed on PR #1 at commit `6fd06479e370e21e3583b557536564ab1fce6bc4`.
+- Latest known CI state: Backend CI passed on PR #1 at commit `1cb9f66a1437ee1fa442cea340aeaf59626559af`.
 - Sprint 1 status: complete for TASK-0105 gate.
 - Sprint 2 status: complete for TASK-0105 gate; migrations/reporting remain deferred.
-- Next blockers: fresh Backend CI after the TASK-0206 push, migrations, BI export/dashboard preparation
+- Next blockers: fresh Backend CI after the TASK-0208 push, migrations, TASK-0701 Power BI dashboard work
 - Local backend tests may still fail to run on machines without Python 3.12/dependencies, but GitHub Actions is the current source of truth for PR validation.
 
 Do not claim CI passes unless the relevant GitHub Actions run has been verified.
@@ -71,3 +71,7 @@ Deduplicated `AGENTS.md` into one clean operating instruction file while preserv
 ## TASK-0206 SQL Reporting Foundation
 
 Added a read-only SQL-backed reporting foundation with explicit Pydantic row schemas, a report repository, and repository tests for leads by city/category, missing websites, high-review weak presence, manual review, score distribution, import quality, and missing-data reports. The reporting repository reads persisted `Lead`, `LeadAudit`, `LeadScore`, `LeadImportRun`, and `LeadImportError` rows without dashboards, BI export, external API calls, AI analytics, outreach logic, migrations, scoring rule changes, audit rule changes, dependency changes, or CI changes.
+
+## TASK-0208 BI Export Dataset Layer
+
+Added a BI export dataset layer that converts SQL-backed reporting outputs into stable, flat, dashboard-ready tables and CSV strings. The layer adds explicit BI export schemas, a service that calls `ReportRepository`, tests for dataset/table/CSV behavior and side effects, and BI export documentation without dashboards, API routes, file download endpoints, scheduled jobs, external storage, pandas, new dependencies, AI analytics, or integrations.

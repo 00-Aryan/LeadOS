@@ -1,5 +1,12 @@
 """Pydantic schemas package."""
 
+from app.schemas.bi_export import (
+    BIExportCellValue,
+    BIExportColumn,
+    BIExportDataset,
+    BIExportFormat,
+    BIExportTable,
+)
 from app.schemas.report import (
     HighReviewWeakPresenceLeadRow,
     ImportQualitySummaryRow,
@@ -11,6 +18,11 @@ from app.schemas.report import (
 )
 
 __all__ = [
+    "BIExportCellValue",
+    "BIExportColumn",
+    "BIExportDataset",
+    "BIExportFormat",
+    "BIExportTable",
     "HighReviewWeakPresenceLeadRow",
     "ImportQualitySummaryRow",
     "LeadsByCityCategoryRow",
