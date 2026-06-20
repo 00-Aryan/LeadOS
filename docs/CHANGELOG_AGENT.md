@@ -4,10 +4,10 @@
 
 - Current branch: `phase-0-product-foundation`
 - Current PR: `#1`
-- Latest known CI state: Backend CI passed on PR #1 at commit `1cb9f66a1437ee1fa442cea340aeaf59626559af`.
+- Latest known CI state: Backend CI passed on PR #1 at commit `9b7fce3c03a1644cbbf79264d96901f2a10962ec`.
 - Sprint 1 status: complete for TASK-0105 gate.
 - Sprint 2 status: complete for TASK-0105 gate; migrations/reporting remain deferred.
-- Next blockers: fresh Backend CI after the TASK-0208 push, migrations, TASK-0701 Power BI dashboard work
+- Next blockers: TASK-0701 commit/push and fresh Backend CI, migrations, TASK-0702 Tableau dashboard spec or TASK-0502 outreach draft foundation
 - Local backend tests may still fail to run on machines without Python 3.12/dependencies, but GitHub Actions is the current source of truth for PR validation.
 
 Do not claim CI passes unless the relevant GitHub Actions run has been verified.
@@ -75,3 +75,7 @@ Added a read-only SQL-backed reporting foundation with explicit Pydantic row sch
 ## TASK-0208 BI Export Dataset Layer
 
 Added a BI export dataset layer that converts SQL-backed reporting outputs into stable, flat, dashboard-ready tables and CSV strings. The layer adds explicit BI export schemas, a service that calls `ReportRepository`, tests for dataset/table/CSV behavior and side effects, and BI export documentation without dashboards, API routes, file download endpoints, scheduled jobs, external storage, pandas, new dependencies, AI analytics, or integrations.
+
+## TASK-0701 Power BI Dashboard Specification
+
+Added a manual Power BI dashboard specification, deterministic sample BI export CSV fixtures, and docs/fixture tests. The dashboard spec maps all seven BI export tables to pages, visuals, slicers, measures, modeling guidance, and manual build steps while keeping `.pbix` creation deferred and excluding Power BI automation, frontend work, API routes, external storage, pandas, new dependencies, AI analytics, integrations, and outbound sending.

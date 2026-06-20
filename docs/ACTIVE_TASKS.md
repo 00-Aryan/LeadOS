@@ -10,10 +10,10 @@ Historical files such as `docs/TASKS.md`, `docs/GITHUB_ISSUES_TO_CREATE.md`, `do
 
 - PR: #1
 - Branch: phase-0-product-foundation
-- Latest verified CI: Backend CI passed at commit `1cb9f66a1437ee1fa442cea340aeaf59626559af`
+- Latest verified CI: Backend CI passed at commit `9b7fce3c03a1644cbbf79264d96901f2a10962ec`
 - Local validation caveat: local tests may fail to run on machines without Python 3.12 and backend dependencies; GitHub Actions is current PR validation source of truth.
-- Latest local HEAD before TASK-0208 edits: `1cb9f66a1437ee1fa442cea340aeaf59626559af`
-- Current-head CI status: Current local HEAD matched the latest verified CI commit before TASK-0208 edits. Any pushed TASK-0208 commit must receive fresh Backend CI verification.
+- Latest local HEAD before TASK-0701 edits: `9b7fce3c03a1644cbbf79264d96901f2a10962ec`
+- Current-head CI status: Current local HEAD matched the latest verified CI commit before TASK-0701 edits. Any pushed TASK-0701 commit must receive fresh Backend CI verification.
 
 ## Current Operating Rule
 
@@ -37,20 +37,22 @@ No feature work should begin unless the latest PR head has passing Backend CI or
 | TASK-0207 | Add scoring persistence repository | Backend implementation | Complete | GitHub issue #26 | Backend CI verified at commit `90a674aae2ad13a68d5aaf2f7e374ffbf66fd568`. |
 | TASK-AGENTS-DEDUP | Deduplicate agent operating instructions | Documentation/repair | Complete | User-assigned task | AGENTS.md repair completed at commit `6fd06479e370e21e3583b557536564ab1fce6bc4`. |
 | TASK-0206 | Add SQL extraction/reporting foundation | Backend implementation | Complete | GitHub issue #24 | Backend CI verified at commit `1cb9f66a1437ee1fa442cea340aeaf59626559af`. |
-| TASK-0208 | Add BI export dataset layer | Backend implementation | In progress | User-assigned Day 7 task | Adds dashboard-ready dataset schemas, BI export service, CSV string conversion, tests, and docs without dashboards, API routes, file downloads, jobs, external storage, pandas, or integrations. |
+| TASK-0208 | Add BI export dataset layer | Backend implementation | Complete | User-assigned Day 7 task | Backend CI verified at commit `9b7fce3c03a1644cbbf79264d96901f2a10962ec`. |
+| TASK-0701 | Add Power BI dashboard specification and sample export fixtures | Documentation/test fixtures | Complete pending commit, push, and Backend CI verification | User-assigned Day 8 task | Adds a manual Power BI dashboard specification, deterministic BI export CSV fixtures, and tests without `.pbix`, Power BI automation, frontend, API route, external storage, pandas, dependencies, AI analytics, integrations, or outbound sending. |
 
 ## Blocked / Waiting
 
 | ID | Task | Blocker | Required Action | Notes |
 |---|---|---|---|---|
 | WAIT-0001 | Full local backend test validation | Local Python 3.12 / pytest environment not fully provisioned | Use GitHub Actions as PR validation source or provision local Python 3.12 dependencies | Do not claim local tests pass unless they are actually run. |
-| WAIT-0006 | Fresh CI after TASK-0208 push | TASK-0208 changes are newer than the verified baseline until pushed and checked | Verify Backend CI after any new pushed commit | Do not start TASK-0701 from unverified TASK-0208 code. |
+| WAIT-0006 | Commit, push, and fresh CI after TASK-0701 | TASK-0701 changes are newer than the verified baseline until committed, pushed, and checked | Commit and push TASK-0701, then verify Backend CI | Do not start TASK-0702 or TASK-0502 until TASK-0701 is committed, pushed, and Backend CI is green. |
 
 ## Next Up
 
 | ID | Task | Type | Why Next | Acceptance Criteria |
 |---|---|---|---|---|
-| TASK-0701 | Build Power BI dashboard from LeadOS reporting dataset | Dashboard implementation | Only after TASK-0208 is committed, pushed, and Backend CI is green | Dashboard should consume the BI export dataset conceptually | Do not start until TASK-0208 verification is complete. |
+| TASK-0702 | Add Tableau dashboard specification using BI export fixtures | Dashboard specification | Only after TASK-0701 is committed, pushed, and Backend CI is green | Tableau spec should consume the existing BI export fixtures without adding binaries or external dependencies. |
+| TASK-0502 | Add outreach draft foundation | Backend implementation | Only after TASK-0701 is committed, pushed, and Backend CI is green | Outreach foundation must preserve manual review and avoid outbound sending. |
 
 ## Deferred
 

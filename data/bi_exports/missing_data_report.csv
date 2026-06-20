@@ -1,0 +1,4 @@
+lead_id,business_name,city,category,missing_fields,score_missing_data
+401,Ranchi Dental Care,Ranchi,Dentist,website; email,website
+402,Steel City Clinic,Jamshedpur,Clinic,booking_link,booking_link
+403,Bokaro Style Studio,Bokaro,Salon,review_count; website,review_count; website
