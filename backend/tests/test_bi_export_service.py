@@ -99,11 +99,8 @@ def test_csv_output_serializes_list_and_dict_values_deterministically() -> None:
         [{"payload": {"b": 2, "a": 1}, "items": ["z", "a"]}],
     )
 
-    assert table.rows == [{"payload": "{\"a\":1,\"b\":2}", "items": "[\"z\",\"a\"]"}]
-    assert service.to_csv(table) == (
-        "payload,items\n"
-        "\"{\"\"a\"\":1,\"\"b\"\":2}\",\"[\"\"z\"\",\"\"a\"\"]\"\n"
-    )
+    assert table.rows == [{"payload": '{"a":1,"b":2}', "items": '["z","a"]'}]
+    assert service.to_csv(table) == ('payload,items\n"{""a"":1,""b"":2}","[""z"",""a""]"\n')
 
 
 def test_csv_bundle_returns_one_csv_string_per_table(db_session) -> None:
