@@ -79,3 +79,7 @@ Added a BI export dataset layer that converts SQL-backed reporting outputs into 
 ## TASK-0701 Power BI Dashboard Specification
 
 Added a manual Power BI dashboard specification, deterministic sample BI export CSV fixtures, and docs/fixture tests. The dashboard spec maps all seven BI export tables to pages, visuals, slicers, measures, modeling guidance, and manual build steps while keeping `.pbix` creation deferred and excluding Power BI automation, frontend work, API routes, external storage, pandas, new dependencies, AI analytics, integrations, and outbound sending.
+
+## TASK-0702 Tableau Dashboard Specification
+
+Added a manual Tableau dashboard specification and documentation tests using the existing BI export CSV fixtures. The Tableau spec maps all seven BI export tables to manual dashboard pages, worksheets, filters, calculated fields, tooltip guidance, and portfolio screenshot planning while keeping `.twb`, `.twbx`, and `.hyper` workbook creation deferred and excluding Tableau automation, frontend work, API routes, external storage, pandas, new dependencies, AI analytics, integrations, and outbound sending.
