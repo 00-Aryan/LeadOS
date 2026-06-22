@@ -4,10 +4,10 @@
 
 - Current branch: `phase-0-product-foundation`
 - Current PR: `#1`
-- Latest known CI state: Backend CI passed on PR #1 at commit `9b7fce3c03a1644cbbf79264d96901f2a10962ec`.
+- Latest known CI state: user-provided task handoff records Backend CI passed on PR #1 at commit `362fd8018dce531fe8fdd0d8b8fb8f40d28a4b0b` in run #100; this environment could not re-query GitHub Actions.
 - Sprint 1 status: complete for TASK-0105 gate.
 - Sprint 2 status: complete for TASK-0105 gate; migrations/reporting remain deferred.
-- Next blockers: TASK-0701 commit/push and fresh Backend CI, migrations, TASK-0702 Tableau dashboard spec or TASK-0502 outreach draft foundation
+- Next blockers: TASK-0502 commit/push and fresh Backend CI, migrations, deferred evaluator implementation
 - Local backend tests may still fail to run on machines without Python 3.12/dependencies, but GitHub Actions is the current source of truth for PR validation.
 
 Do not claim CI passes unless the relevant GitHub Actions run has been verified.
@@ -83,3 +83,7 @@ Added a manual Power BI dashboard specification, deterministic sample BI export 
 ## TASK-0702 Tableau Dashboard Specification
 
 Added a manual Tableau dashboard specification and documentation tests using the existing BI export CSV fixtures. The Tableau spec maps all seven BI export tables to manual dashboard pages, worksheets, filters, calculated fields, tooltip guidance, and portfolio screenshot planning while keeping `.twb`, `.twbx`, and `.hyper` workbook creation deferred and excluding Tableau automation, frontend work, API routes, external storage, pandas, new dependencies, AI analytics, integrations, and outbound sending.
+
+## TASK-0502 Outreach Draft Foundation
+
+Added structured outreach drafting schemas and deterministic templates for `short_email` and `whatsapp_message`. Drafts use only supplied business, location, audit, scoring, and offer context; keep scoring context in internal personalization notes; expose assumptions; and always require human review. The task does not add sending, evaluation, routes, persistence, migrations, LLM calls, integrations, or new dependencies.

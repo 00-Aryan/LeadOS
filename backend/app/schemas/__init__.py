@@ -7,6 +7,7 @@ from app.schemas.bi_export import (
     BIExportFormat,
     BIExportTable,
 )
+from app.schemas.outreach import OutreachChannel, OutreachDraftInput, OutreachDraftResult
 from app.schemas.report import (
     HighReviewWeakPresenceLeadRow,
     ImportQualitySummaryRow,
@@ -29,5 +30,8 @@ __all__ = [
     "ManualReviewLeadRow",
     "MissingDataReportRow",
     "MissingWebsiteLeadRow",
+    "OutreachChannel",
+    "OutreachDraftInput",
+    "OutreachDraftResult",
     "ScoreDistributionByCategoryRow",
 ]
