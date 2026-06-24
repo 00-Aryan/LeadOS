@@ -2,15 +2,17 @@
 
 ## Required Now
 
-Use `docs/OUTREACH_EXPERT_REVIEW_CHECKLIST.md` as a mandatory manual gate after
-deterministic evaluation and before any human considers sending a draft.
+The TASK-0503 sample cases are entirely fictional and exist only for
+validation and portfolio demonstration. They are not real prospects and must
+not be treated as an outreach queue.
 
-Every revised draft must be evaluated again before another manual review.
-Automatic outbound sending remains prohibited.
+No automatic sending is permitted. `approve` means only that a human may
+consider sending a separately verified draft. `revise` cases require
+re-evaluation before another manual review. `reject` cases must not be used.
 
-As of TASK-0603 start, the user-provided task handoff records Backend CI
-passing at commit `4bfb6300bc68c7babc750f74d9142690225454f9`
-in run #104.
+As of TASK-0503 start, the user-provided task handoff records Backend CI
+passing at commit `0fd9c69581865a864bf6a657f683bd5083b39888`
+in run #106.
 
 For current task sequencing and blockers, use `docs/ACTIVE_TASKS.md`.
 
@@ -19,6 +21,7 @@ For current task sequencing and blockers, use `docs/ACTIVE_TASKS.md`.
 - Supply verified lead and audit facts when evaluating a draft.
 - Manually review every evaluated draft with the expert checklist.
 - Re-evaluate every revised draft before it returns to manual review.
+- Never use rejected sample drafts as outreach.
 - Build the Power BI and Tableau workbooks manually outside this repository.
 - Capture dashboard screenshots for the portfolio case study.
 
@@ -33,12 +36,12 @@ and backend dependencies. GitHub Actions is the final validation source.
 
 ## Required Before Next Implementation
 
-Complete TASK-0603 local validation using the commands documented in
+Complete TASK-0503 local validation using the commands documented in
 `AGENTS.md` and the task instructions. If Python 3.12 is unavailable, use the
 documented Python 3.11 fallback and state that clearly.
 
-After explicit user authorization, commit and push TASK-0603. Fresh Backend CI
-must pass for that pushed commit before TASK-0603 can be marked complete.
+After explicit user authorization, commit and push TASK-0503. Fresh Backend CI
+must pass for that pushed commit before TASK-0503 can be marked complete.
 
 ## Required Before Production
 

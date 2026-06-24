@@ -11,12 +11,12 @@ Historical files such as `docs/TASKS.md`, `docs/GITHUB_ISSUES_TO_CREATE.md`, `do
 - PR: #1
 - Branch: phase-0-product-foundation
 - Latest verified CI: User-provided task handoff records Backend CI passed at
-  commit `4bfb6300bc68c7babc750f74d9142690225454f9` in run #104.
+  commit `0fd9c69581865a864bf6a657f683bd5083b39888` in run #106.
 - Local validation caveat: local tests may fail to run on machines without Python 3.12 and backend dependencies; GitHub Actions is current PR validation source of truth.
-- Latest local HEAD before TASK-0603 edits:
-  `4bfb6300bc68c7babc750f74d9142690225454f9`.
+- Latest local HEAD before TASK-0503 edits:
+  `0fd9c69581865a864bf6a657f683bd5083b39888`.
 - Current-head CI status: Current local HEAD matched the user-provided latest
-  verified CI commit before TASK-0603 edits. Any pushed TASK-0603 commit must
+  verified CI commit before TASK-0503 edits. Any pushed TASK-0503 commit must
   receive fresh Backend CI verification.
 
 ## Current Operating Rule
@@ -46,18 +46,19 @@ No feature work should begin unless the latest PR head has passing Backend CI or
 | TASK-0702 | Add Tableau dashboard specification using BI export fixtures | Documentation/test fixtures | Complete | User-assigned Day 9 task | User-provided task handoff records Backend CI verified at commit `362fd8018dce531fe8fdd0d8b8fb8f40d28a4b0b` in run #100. Adds a manual Tableau dashboard specification and documentation tests without Tableau workbook binaries or new dependencies. |
 | TASK-0502 | Add outreach draft foundation | Backend implementation | Complete | User-assigned Day 10 task | Backend CI verified at commit `e96bc4cdb5bd32f75de9c138d20c52af2bc4041f` in run #102. Adds deterministic email and WhatsApp drafts with mandatory human review and no sending or external services. |
 | TASK-0602 | Build deterministic outreach evaluator template | Backend implementation | Complete | User-assigned Day 11 task | Backend CI verified at commit `4bfb6300bc68c7babc750f74d9142690225454f9` in run #104. Evaluates structured outreach drafts without sending, rewriting, persistence, routes, LLM integration, or new dependencies. |
-| TASK-0603 | Create expert outreach review checklist | Documentation/documentation test | In progress | User-assigned task | Adds a mandatory manual decision gate after deterministic evaluation and before human sending, with `approve`, `revise`, and `reject` outcomes. No sending, persistence, evaluator changes, or automatic rewriting. |
+| TASK-0603 | Create expert outreach review checklist | Documentation/documentation test | Complete | User-assigned task | Backend CI verified at commit `0fd9c69581865a864bf6a657f683bd5083b39888` in run #106. Adds a mandatory manual decision gate after deterministic evaluation and before human sending. |
+| TASK-0503 | Generate the first validated sample outreach set | Sample data/test/documentation | In progress | User-assigned task | Adds six deterministic fictional cases covering both channels and approve, revise, and reject decisions. No sending, production workflow, persistence, or rule changes. |
 
 ## Blocked / Waiting
 
 | ID | Task | Blocker | Required Action | Notes |
 |---|---|---|---|---|
 | WAIT-0001 | Full local backend test validation | Local Python 3.12 / pytest environment not fully provisioned | Use GitHub Actions as PR validation source or provision local Python 3.12 dependencies | Do not claim local tests pass unless they are actually run. |
-| WAIT-0010 | Commit, push, and fresh CI after TASK-0603 | TASK-0603 changes will be newer than the verified baseline until explicitly committed, pushed, and checked | After user authorization, commit and push TASK-0603, then verify Backend CI | Do not mark TASK-0603 complete until fresh Backend CI passes for the pushed commit. |
+| WAIT-0011 | Commit, push, and fresh CI after TASK-0503 | TASK-0503 changes will be newer than the verified baseline until explicitly committed, pushed, and checked | After user authorization, commit and push TASK-0503, then verify Backend CI | Do not mark TASK-0503 complete until fresh Backend CI passes for the pushed commit. |
 
 ## Next Up
 
-No next implementation task should start until WAIT-0010 is cleared.
+No next implementation task should start until WAIT-0011 is cleared.
 
 ## Deferred
 
