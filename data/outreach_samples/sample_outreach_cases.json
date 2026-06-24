@@ -1,0 +1,490 @@
+[
+  {
+    "case_id": "sample-01-email-approve",
+    "scenario": "well-supported personalization in a concise email",
+    "fictional_business": {
+      "business_name": "Northstar Dental Studio",
+      "category": "Dentist",
+      "location": "Fictional Harbor",
+      "fictional": true
+    },
+    "input": {
+      "business_name": "Northstar Dental Studio",
+      "category": "Dentist",
+      "location": "Fictional Harbor",
+      "audit_findings": ["missing meta description", "booking link not visible"],
+      "score_reason": "Sample score reflects strong reviews and visible website gaps.",
+      "offer_angle": "improving visible website trust signals",
+      "channel": "short_email"
+    },
+    "draft": {
+      "channel": "short_email",
+      "subject_line": "Quick website visibility idea for Northstar Dental Studio",
+      "message_body": "Hi Northstar Dental Studio team,\n\nYour listing shows Northstar Dental Studio as a Dentist business in Fictional Harbor. Public website audit notes include: missing meta description and booking link not visible.\n\nI can prepare a short, human-reviewed website improvement note focused on improving visible website trust signals. Would you be open to seeing the 2-3 highest-priority fixes?\n\nRegards,",
+      "personalization_notes": [
+        "Business fact: Northstar Dental Studio is a Dentist business in Fictional Harbor.",
+        "Offer angle: improving visible website trust signals.",
+        "Audit fact for reviewer: missing meta description.",
+        "Audit fact for reviewer: booking link not visible.",
+        "Scoring context for reviewer only: Sample score reflects strong reviews and visible website gaps."
+      ],
+      "assumptions_used": [
+        "The recipient is the correct contact for Northstar Dental Studio.",
+        "Public audit facts will be manually verified before use.",
+        "No revenue, ranking, or conversion impact is assumed."
+      ],
+      "review_required": true
+    },
+    "supported_facts": [
+      "Northstar Dental Studio",
+      "Dentist",
+      "Fictional Harbor",
+      "missing meta description",
+      "booking link not visible",
+      "improving visible website trust signals"
+    ],
+    "evaluation": {
+      "score_breakdown": {
+        "relevance": 10,
+        "personalization": 10,
+        "clarity": 10,
+        "tone": 10,
+        "truthfulness": 10,
+        "cta_quality": 10
+      },
+      "total_score": 60,
+      "risk_rating": "low",
+      "pass_or_review": "pass",
+      "failure_reasons": [],
+      "bad_lines": [],
+      "suggested_revision": null
+    },
+    "expert_review": {
+      "decision": "approve",
+      "evidence_verified": true,
+      "unresolved_concerns": [],
+      "required_revisions": [],
+      "re_evaluation_required": false,
+      "automatic_sending_permitted": false,
+      "review_notes": "All fictional facts are supported, evaluator thresholds pass, and the email has one clear low-friction CTA. Approval means only that a human may consider sending."
+    },
+    "draft_mutation": null
+  },
+  {
+    "case_id": "sample-02-whatsapp-approve",
+    "scenario": "well-supported personalization in a concise WhatsApp message",
+    "fictional_business": {
+      "business_name": "Juniper Wellness Room",
+      "category": "Wellness studio",
+      "location": "Sample Junction",
+      "fictional": true
+    },
+    "input": {
+      "business_name": "Juniper Wellness Room",
+      "category": "Wellness studio",
+      "location": "Sample Junction",
+      "audit_findings": ["contact link not visible", "social link not visible"],
+      "score_reason": "Sample score reflects clear public contact gaps.",
+      "offer_angle": "making public contact options easier to find",
+      "channel": "whatsapp_message"
+    },
+    "draft": {
+      "channel": "whatsapp_message",
+      "subject_line": null,
+      "message_body": "Hi Juniper Wellness Room team, your listing shows a Wellness studio business in Sample Junction. Public website audit notes include: contact link not visible and social link not visible. I can prepare a short, human-reviewed improvement note focused on making public contact options easier to find. Would you like the top 2-3 fixes?",
+      "personalization_notes": [
+        "Business fact: Juniper Wellness Room is a Wellness studio business in Sample Junction.",
+        "Offer angle: making public contact options easier to find.",
+        "Audit fact for reviewer: contact link not visible.",
+        "Audit fact for reviewer: social link not visible.",
+        "Scoring context for reviewer only: Sample score reflects clear public contact gaps."
+      ],
+      "assumptions_used": [
+        "The recipient is the correct contact for Juniper Wellness Room.",
+        "Public audit facts will be manually verified before use.",
+        "No revenue, ranking, or conversion impact is assumed."
+      ],
+      "review_required": true
+    },
+    "supported_facts": [
+      "Juniper Wellness Room",
+      "Wellness studio",
+      "Sample Junction",
+      "contact link not visible",
+      "social link not visible",
+      "making public contact options easier to find"
+    ],
+    "evaluation": {
+      "score_breakdown": {
+        "relevance": 10,
+        "personalization": 10,
+        "clarity": 10,
+        "tone": 10,
+        "truthfulness": 10,
+        "cta_quality": 10
+      },
+      "total_score": 60,
+      "risk_rating": "low",
+      "pass_or_review": "pass",
+      "failure_reasons": [],
+      "bad_lines": [],
+      "suggested_revision": null
+    },
+    "expert_review": {
+      "decision": "approve",
+      "evidence_verified": true,
+      "unresolved_concerns": [],
+      "required_revisions": [],
+      "re_evaluation_required": false,
+      "automatic_sending_permitted": false,
+      "review_notes": "The fictional evidence supports the personalization, the message suits WhatsApp, and the evaluator passes it. Approval does not authorize sending."
+    },
+    "draft_mutation": null
+  },
+  {
+    "case_id": "sample-03-email-revise",
+    "scenario": "unclear CTA requires revision despite supported facts",
+    "fictional_business": {
+      "business_name": "Maple Lantern Bakery",
+      "category": "Bakery",
+      "location": "Demo Vale",
+      "fictional": true
+    },
+    "input": {
+      "business_name": "Maple Lantern Bakery",
+      "category": "Bakery",
+      "location": "Demo Vale",
+      "audit_findings": ["missing meta description", "contact page not visible"],
+      "score_reason": "Sample score reflects public website clarity gaps.",
+      "offer_angle": "clarifying public website information",
+      "channel": "short_email"
+    },
+    "draft": {
+      "channel": "short_email",
+      "subject_line": "Quick website visibility idea for Maple Lantern Bakery",
+      "message_body": "Hi Maple Lantern Bakery team,\n\nYour listing shows Maple Lantern Bakery as a Bakery business in Demo Vale. Public website audit notes include: missing meta description and contact page not visible.\n\nI can prepare a short, human-reviewed website improvement note focused on clarifying public website information. A website improvement note is available.\n\nRegards,",
+      "personalization_notes": [
+        "Business fact: Maple Lantern Bakery is a Bakery business in Demo Vale.",
+        "Offer angle: clarifying public website information.",
+        "Audit fact for reviewer: missing meta description.",
+        "Audit fact for reviewer: contact page not visible.",
+        "Scoring context for reviewer only: Sample score reflects public website clarity gaps."
+      ],
+      "assumptions_used": [
+        "The recipient is the correct contact for Maple Lantern Bakery.",
+        "Public audit facts will be manually verified before use.",
+        "No revenue, ranking, or conversion impact is assumed."
+      ],
+      "review_required": true
+    },
+    "supported_facts": [
+      "Maple Lantern Bakery",
+      "Bakery",
+      "Demo Vale",
+      "missing meta description",
+      "contact page not visible",
+      "clarifying public website information"
+    ],
+    "evaluation": {
+      "score_breakdown": {
+        "relevance": 10,
+        "personalization": 10,
+        "clarity": 10,
+        "tone": 10,
+        "truthfulness": 10,
+        "cta_quality": 3
+      },
+      "total_score": 53,
+      "risk_rating": "low",
+      "pass_or_review": "review",
+      "failure_reasons": ["Draft does not contain a sufficiently clear next step."],
+      "bad_lines": [],
+      "suggested_revision": "Revise the draft using only verified facts, remove pressure or unsupported outcome claims, keep the channel length appropriate, and end with one clear low-pressure question."
+    },
+    "expert_review": {
+      "decision": "revise",
+      "evidence_verified": true,
+      "unresolved_concerns": ["The draft has no clear next-step question."],
+      "required_revisions": ["Restore one clear, low-friction CTA."],
+      "re_evaluation_required": true,
+      "automatic_sending_permitted": false,
+      "review_notes": "The facts are supported, but CTA quality fails. The revised draft must be evaluated again."
+    },
+    "draft_mutation": {
+      "description": "Replace the service-generated question with a statement to demonstrate an unclear CTA.",
+      "operations": [
+        {
+          "operation": "replace_text",
+          "old": "Would you be open to seeing the 2-3 highest-priority fixes?",
+          "new": "A website improvement note is available."
+        }
+      ]
+    }
+  },
+  {
+    "case_id": "sample-04-whatsapp-revise",
+    "scenario": "excessive channel length, manipulative urgency, and fake familiarity require revision",
+    "fictional_business": {
+      "business_name": "Silver Fern Yoga Lab",
+      "category": "Yoga studio",
+      "location": "Example Point",
+      "fictional": true
+    },
+    "input": {
+      "business_name": "Silver Fern Yoga Lab",
+      "category": "Yoga studio",
+      "location": "Example Point",
+      "audit_findings": ["class schedule link not visible", "contact link not visible"],
+      "score_reason": "Sample score reflects visible navigation gaps.",
+      "offer_angle": "making class and contact information easier to find",
+      "channel": "whatsapp_message"
+    },
+    "draft": {
+      "channel": "whatsapp_message",
+      "subject_line": null,
+      "message_body": "Hi Silver Fern Yoga Lab team, your listing shows a Yoga studio business in Example Point. Public website audit notes include: class schedule link not visible and contact link not visible. I can prepare a short, human-reviewed improvement note focused on making class and contact information easier to find. Would you like the top 2-3 fixes? As we discussed, act now before it is too late. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context.",
+      "personalization_notes": [
+        "Business fact: Silver Fern Yoga Lab is a Yoga studio business in Example Point.",
+        "Offer angle: making class and contact information easier to find.",
+        "Audit fact for reviewer: class schedule link not visible.",
+        "Audit fact for reviewer: contact link not visible.",
+        "Scoring context for reviewer only: Sample score reflects visible navigation gaps."
+      ],
+      "assumptions_used": [
+        "The recipient is the correct contact for Silver Fern Yoga Lab.",
+        "Public audit facts will be manually verified before use.",
+        "No revenue, ranking, or conversion impact is assumed."
+      ],
+      "review_required": true
+    },
+    "supported_facts": [
+      "Silver Fern Yoga Lab",
+      "Yoga studio",
+      "Example Point",
+      "class schedule link not visible",
+      "contact link not visible",
+      "making class and contact information easier to find"
+    ],
+    "evaluation": {
+      "score_breakdown": {
+        "relevance": 10,
+        "personalization": 10,
+        "clarity": 4,
+        "tone": 0,
+        "truthfulness": 10,
+        "cta_quality": 10
+      },
+      "total_score": 44,
+      "risk_rating": "medium",
+      "pass_or_review": "review",
+      "failure_reasons": [
+        "Draft uses manipulative pressure or artificial urgency.",
+        "Draft uses unverified familiarity.",
+        "Draft is too long for the selected channel.",
+        "Draft requires clearer or shorter wording.",
+        "Draft tone requires human revision."
+      ],
+      "bad_lines": [
+        "Hi Silver Fern Yoga Lab team, your listing shows a Yoga studio business in Example Point. Public website audit notes include: class schedule link not visible and contact link not visible. I can prepare a short, human-reviewed improvement note focused on making class and contact information easier to find. Would you like the top 2-3 fixes? As we discussed, act now before it is too late. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context. Verified public website context."
+      ],
+      "suggested_revision": "Revise the draft using only verified facts, remove pressure or unsupported outcome claims, keep the channel length appropriate, and end with one clear low-pressure question."
+    },
+    "expert_review": {
+      "decision": "revise",
+      "evidence_verified": true,
+      "unresolved_concerns": [
+        "Fake familiarity is present.",
+        "Manipulative urgency is present.",
+        "The message has excessive channel length."
+      ],
+      "required_revisions": [
+        "Remove the familiarity claim and urgency.",
+        "Shorten the message to WhatsApp-appropriate length."
+      ],
+      "re_evaluation_required": true,
+      "automatic_sending_permitted": false,
+      "review_notes": "The underlying fictional facts remain valid, but the presentation failures require revision and re-evaluation."
+    },
+    "draft_mutation": {
+      "description": "Append fake familiarity, manipulative urgency, and repeated filler to exceed the WhatsApp length limit.",
+      "operations": [
+        {
+          "operation": "append_text",
+          "text": " As we discussed, act now before it is too late."
+        },
+        {
+          "operation": "append_repeated_text",
+          "text": " Verified public website context.",
+          "count": 35
+        }
+      ]
+    }
+  },
+  {
+    "case_id": "sample-05-email-reject",
+    "scenario": "guaranteed results and unsupported revenue claim require rejection",
+    "fictional_business": {
+      "business_name": "Copper Kite Repair Co",
+      "category": "Repair shop",
+      "location": "Fictional Crossing",
+      "fictional": true
+    },
+    "input": {
+      "business_name": "Copper Kite Repair Co",
+      "category": "Repair shop",
+      "location": "Fictional Crossing",
+      "audit_findings": ["service page not visible", "phone link not visible"],
+      "score_reason": "Sample score reflects public service-information gaps.",
+      "offer_angle": "making service and contact details easier to find",
+      "channel": "short_email"
+    },
+    "draft": {
+      "channel": "short_email",
+      "subject_line": "Quick website visibility idea for Copper Kite Repair Co",
+      "message_body": "Hi Copper Kite Repair Co team,\n\nYour listing shows Copper Kite Repair Co as a Repair shop business in Fictional Crossing. Public website audit notes include: service page not visible and phone link not visible.\n\nI can prepare a short, human-reviewed website improvement note focused on making service and contact details easier to find. Would you be open to seeing the 2-3 highest-priority fixes?\n\nRegards, We guarantee results and guaranteed revenue within one month.",
+      "personalization_notes": [
+        "Business fact: Copper Kite Repair Co is a Repair shop business in Fictional Crossing.",
+        "Offer angle: making service and contact details easier to find.",
+        "Audit fact for reviewer: service page not visible.",
+        "Audit fact for reviewer: phone link not visible.",
+        "Scoring context for reviewer only: Sample score reflects public service-information gaps."
+      ],
+      "assumptions_used": [
+        "The recipient is the correct contact for Copper Kite Repair Co.",
+        "Public audit facts will be manually verified before use.",
+        "No revenue, ranking, or conversion impact is assumed."
+      ],
+      "review_required": true
+    },
+    "supported_facts": [
+      "Copper Kite Repair Co",
+      "Repair shop",
+      "Fictional Crossing",
+      "service page not visible",
+      "phone link not visible",
+      "making service and contact details easier to find"
+    ],
+    "evaluation": {
+      "score_breakdown": {
+        "relevance": 10,
+        "personalization": 10,
+        "clarity": 10,
+        "tone": 10,
+        "truthfulness": 2,
+        "cta_quality": 10
+      },
+      "total_score": 52,
+      "risk_rating": "high",
+      "pass_or_review": "review",
+      "failure_reasons": [
+        "Draft contains unsupported or overpromising claims.",
+        "Draft truthfulness score is below the required threshold."
+      ],
+      "bad_lines": ["Regards, We guarantee results and guaranteed revenue within one month."],
+      "suggested_revision": "Revise the draft using only verified facts, remove pressure or unsupported outcome claims, keep the channel length appropriate, and end with one clear low-pressure question."
+    },
+    "expert_review": {
+      "decision": "reject",
+      "evidence_verified": false,
+      "unresolved_concerns": [
+        "The guaranteed outcome and revenue claim have no supporting evidence."
+      ],
+      "required_revisions": [],
+      "re_evaluation_required": false,
+      "automatic_sending_permitted": false,
+      "review_notes": "The evaluator marks the draft high risk, and the deceptive outcome claim makes this draft unusable."
+    },
+    "draft_mutation": {
+      "description": "Append guaranteed results and an unsupported revenue claim to demonstrate high-risk rejection.",
+      "operations": [
+        {
+          "operation": "append_text",
+          "text": " We guarantee results and guaranteed revenue within one month."
+        }
+      ]
+    }
+  },
+  {
+    "case_id": "sample-06-whatsapp-reject",
+    "scenario": "missing supported facts and unsupported customer-loss claim require rejection",
+    "fictional_business": {
+      "business_name": "Blue Acorn Cafe",
+      "category": "Cafe",
+      "location": "Mockingbird Square",
+      "fictional": true
+    },
+    "input": {
+      "business_name": "Blue Acorn Cafe",
+      "category": "Cafe",
+      "location": "Mockingbird Square",
+      "audit_findings": ["menu link not visible", "opening hours not visible"],
+      "score_reason": "Sample score reflects missing public visit information.",
+      "offer_angle": "making menu and visit information easier to find",
+      "channel": "whatsapp_message"
+    },
+    "draft": {
+      "channel": "whatsapp_message",
+      "subject_line": null,
+      "message_body": "Hi Blue Acorn Cafe team, your listing shows a Cafe business in Mockingbird Square. Public website audit notes include: menu link not visible and opening hours not visible. I can prepare a short, human-reviewed improvement note focused on making menu and visit information easier to find. Would you like the top 2-3 fixes? You are losing customers and losing business because of this gap.",
+      "personalization_notes": [
+        "Business fact: Blue Acorn Cafe is a Cafe business in Mockingbird Square.",
+        "Offer angle: making menu and visit information easier to find.",
+        "Audit fact for reviewer: menu link not visible.",
+        "Audit fact for reviewer: opening hours not visible.",
+        "Scoring context for reviewer only: Sample score reflects missing public visit information."
+      ],
+      "assumptions_used": [
+        "The recipient is the correct contact for Blue Acorn Cafe.",
+        "Public audit facts will be manually verified before use.",
+        "No revenue, ranking, or conversion impact is assumed."
+      ],
+      "review_required": true
+    },
+    "supported_facts": [],
+    "evaluation": {
+      "score_breakdown": {
+        "relevance": 2,
+        "personalization": 2,
+        "clarity": 8,
+        "tone": 10,
+        "truthfulness": 6,
+        "cta_quality": 10
+      },
+      "total_score": 38,
+      "risk_rating": "high",
+      "pass_or_review": "review",
+      "failure_reasons": [
+        "No supported facts were supplied for evidence review.",
+        "Draft contains unsupported or overpromising claims.",
+        "Draft has weak relevance to the supplied facts.",
+        "Draft has insufficient evidence-based personalization.",
+        "Draft truthfulness score is below the required threshold."
+      ],
+      "bad_lines": [
+        "Hi Blue Acorn Cafe team, your listing shows a Cafe business in Mockingbird Square. Public website audit notes include: menu link not visible and opening hours not visible. I can prepare a short, human-reviewed improvement note focused on making menu and visit information easier to find. Would you like the top 2-3 fixes? You are losing customers and losing business because of this gap."
+      ],
+      "suggested_revision": "Revise the draft using only verified facts, remove pressure or unsupported outcome claims, keep the channel length appropriate, and end with one clear low-pressure question."
+    },
+    "expert_review": {
+      "decision": "reject",
+      "evidence_verified": false,
+      "unresolved_concerns": [
+        "No supported facts were supplied.",
+        "The customer-loss and business-loss claims are unsupported."
+      ],
+      "required_revisions": [],
+      "re_evaluation_required": false,
+      "automatic_sending_permitted": false,
+      "review_notes": "The evidence gate fails and the evaluator marks the draft high risk. This sample must not be used."
+    },
+    "draft_mutation": {
+      "description": "Supply no evaluator evidence and append an unsupported customer-loss and business-loss claim.",
+      "operations": [
+        {
+          "operation": "append_text",
+          "text": " You are losing customers and losing business because of this gap."
+        }
+      ]
+    }
+  }
+]

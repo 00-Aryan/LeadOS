@@ -1,0 +1,4 @@
+lead_id,business_name,city,category,total_score,priority_label,confidence_level,missing_data,risk_flags
+301,Prime Smile Dental,Ranchi,Dentist,78.5,review_needed,medium,website; booking_link,manual_check_required
+302,Steel City Wellness Clinic,Jamshedpur,Clinic,72.0,review_needed,medium,email,low_confidence_audit
+303,Bokaro Style Studio,Bokaro,Salon,64.5,review_needed,low,review_count; website,insufficient_source_data

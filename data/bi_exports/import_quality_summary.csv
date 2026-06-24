@@ -1,0 +1,3 @@
+import_run_id,source_name,total_records,valid_records,invalid_records,duplicate_records,error_count,created_at
+1,demo_jharkhand_leads.csv,40,34,4,2,4,2026-06-20T09:00:00+00:00
+2,demo_priority_leads.csv,25,23,1,1,1,2026-06-20T09:15:00+00:00

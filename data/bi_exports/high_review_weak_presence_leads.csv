@@ -1,0 +1,4 @@
+lead_id,business_name,city,category,review_count,priority_label,confidence_level,weak_signals
+201,Prime Smile Dental,Ranchi,Dentist,248,high,medium,missing_website; no_booking_signal
+202,Steel City Wellness Clinic,Jamshedpur,Clinic,191,high,medium,no_https; weak_contact_signal
+203,Dhanbad Spice House,Dhanbad,Restaurant,326,medium,low,missing_social_link; no_schema_markup
