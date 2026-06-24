@@ -46,11 +46,13 @@ Some documents are retained for traceability and may not represent current imple
 - `backend/app/schemas/`: Request and response contracts.
 - `backend/app/schemas/bi_export.py`: BI export dataset, table, column, and cell schemas.
 - `backend/app/schemas/outreach.py`: Structured outreach input and draft-result contracts with mandatory review.
+- `backend/app/schemas/evaluation.py`: Structured evaluator input, score breakdown, risk, and review-result contracts.
 - `backend/app/models/`: SQLAlchemy ORM models.
 - `backend/app/repositories/`: Persistence access patterns.
 - `backend/app/services/`: Business logic for import, audit, scoring, BI export, outreach, and evaluation.
 - `backend/app/services/bi_export_service.py`: Builds dashboard-ready datasets and CSV strings from SQL-backed reporting outputs.
 - `backend/app/services/outreach_service.py`: Builds deterministic email and WhatsApp drafts from known lead facts without sending.
+- `backend/app/services/evaluation_service.py`: Deterministically evaluates outreach quality, risk, truthfulness, and CTA quality.
 - `backend/app/routers/`: API route boundaries.
 
 ## Tests
@@ -64,6 +66,7 @@ Some documents are retained for traceability and may not represent current imple
 - `backend/tests/test_audit_service.py`: Deterministic audit behavior.
 - `backend/tests/test_scoring_service.py`: Scoring behavior.
 - `backend/tests/test_outreach_service.py`: Deterministic outreach drafting, review enforcement, channel behavior, and serialization.
+- `backend/tests/test_evaluation_service.py`: Evaluator pass gates, risk triggers, evidence behavior, length limits, and serialization.
 - `backend/tests/test_scoring_router.py`: Scoring API behavior.
 - `backend/tests/test_report_repository.py`: SQL-backed reporting query behavior.
 - `backend/tests/test_bi_export_service.py`: BI export dataset and CSV behavior.

@@ -7,6 +7,13 @@ from app.schemas.bi_export import (
     BIExportFormat,
     BIExportTable,
 )
+from app.schemas.evaluation import (
+    EvaluationScoreBreakdown,
+    OutreachEvaluationInput,
+    OutreachEvaluationResult,
+    PassOrReview,
+    RiskRating,
+)
 from app.schemas.outreach import OutreachChannel, OutreachDraftInput, OutreachDraftResult
 from app.schemas.report import (
     HighReviewWeakPresenceLeadRow,
@@ -24,6 +31,11 @@ __all__ = [
     "BIExportDataset",
     "BIExportFormat",
     "BIExportTable",
+    "EvaluationScoreBreakdown",
+    "OutreachEvaluationInput",
+    "OutreachEvaluationResult",
+    "PassOrReview",
+    "RiskRating",
     "HighReviewWeakPresenceLeadRow",
     "ImportQualitySummaryRow",
     "LeadsByCityCategoryRow",

@@ -87,3 +87,12 @@ Added a manual Tableau dashboard specification and documentation tests using the
 ## TASK-0502 Outreach Draft Foundation
 
 Added structured outreach drafting schemas and deterministic templates for `short_email` and `whatsapp_message`. Drafts use only supplied business, location, audit, scoring, and offer context; keep scoring context in internal personalization notes; expose assumptions; and always require human review. The task does not add sending, evaluation, routes, persistence, migrations, LLM calls, integrations, or new dependencies.
+
+## TASK-0602 Deterministic Outreach Evaluator
+
+Added structured evaluation schemas and a deterministic evaluator for outreach
+relevance, personalization, clarity, tone, truthfulness, CTA quality, risk,
+failure reasons, bad lines, and pass-or-review decisions. Evaluation uses
+explicit supported facts and does not rewrite, persist, route, or send drafts.
+No LLM integration, external API, migration, route, frontend, integration, or
+new dependency was added.

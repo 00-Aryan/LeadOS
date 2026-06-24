@@ -2,19 +2,19 @@
 
 ## Required Now
 
-Complete TASK-0502, then commit and push the scoped outreach foundation changes.
-Verify GitHub Actions Backend CI for the pushed commit.
+Complete TASK-0602, then commit and push the scoped deterministic evaluator
+changes. Verify GitHub Actions Backend CI for the pushed commit.
 
-As of TASK-0502 start, the user-provided task handoff records PR #1 Backend CI
-passing at commit `362fd8018dce531fe8fdd0d8b8fb8f40d28a4b0b` in run #100.
-This environment could not re-query GitHub Actions.
+As of TASK-0602 start, Backend CI is verified passing at commit
+`e96bc4cdb5bd32f75de9c138d20c52af2bc4041f` in run #102.
 
 For current task sequencing and blockers, use `docs/ACTIVE_TASKS.md`.
 
 ## Required Later
 
-- Manually review every generated outreach draft before use.
-- Run the future evaluator before a human sends any draft.
+- Supply verified lead and audit facts when evaluating a draft.
+- Manually review every draft before human use.
+- Revise drafts marked `review` before sending.
 - Build the Power BI and Tableau workbooks manually outside this repository.
 - Capture dashboard screenshots for the portfolio case study.
 
@@ -24,26 +24,16 @@ No automatic outbound sending is permitted.
 
 GitHub Actions Backend CI must be green for the latest PR head commit.
 
-Local backend validation may remain blocked on machines without Python 3.12 and
-backend dependencies. GitHub Actions is the final validation source.
+Local backend validation may remain blocked on machines without Python 3.12
+and backend dependencies. GitHub Actions is the final validation source.
 
 ## Required Before Next Implementation
 
-Complete TASK-0502 and run:
+Complete TASK-0602 and run the backend validation commands documented in
+`AGENTS.md`. If Python 3.12 is unavailable, use the documented Python 3.11
+fallback and state that the full local gate was not verified.
 
-```bash
-cd backend
-make format-check
-make lint
-make test
-cd ..
-git diff --check
-```
-
-If Python 3.12 is unavailable, use the documented Python 3.11 fallback and
-state clearly that the full local gate was not verified.
-
-Then commit and push TASK-0502 and verify Backend CI for that pushed commit.
+Then commit and push TASK-0602 and verify Backend CI for that pushed commit.
 
 ## Required Before Production
 
@@ -57,7 +47,7 @@ Then commit and push TASK-0502 and verify Backend CI for that pushed commit.
 - Deployment.
 - Authentication.
 - Billing.
-- Outreach evaluator implementation.
+- Automatic draft rewriting.
 - Automatic outbound sending.
 - CRM integration.
 - ProjectOS integration.
