@@ -2,19 +2,23 @@
 
 ## Required Now
 
-Complete TASK-0602, then commit and push the scoped deterministic evaluator
-changes. Verify GitHub Actions Backend CI for the pushed commit.
+Use `docs/OUTREACH_EXPERT_REVIEW_CHECKLIST.md` as a mandatory manual gate after
+deterministic evaluation and before any human considers sending a draft.
 
-As of TASK-0602 start, Backend CI is verified passing at commit
-`e96bc4cdb5bd32f75de9c138d20c52af2bc4041f` in run #102.
+Every revised draft must be evaluated again before another manual review.
+Automatic outbound sending remains prohibited.
+
+As of TASK-0603 start, the user-provided task handoff records Backend CI
+passing at commit `4bfb6300bc68c7babc750f74d9142690225454f9`
+in run #104.
 
 For current task sequencing and blockers, use `docs/ACTIVE_TASKS.md`.
 
 ## Required Later
 
 - Supply verified lead and audit facts when evaluating a draft.
-- Manually review every draft before human use.
-- Revise drafts marked `review` before sending.
+- Manually review every evaluated draft with the expert checklist.
+- Re-evaluate every revised draft before it returns to manual review.
 - Build the Power BI and Tableau workbooks manually outside this repository.
 - Capture dashboard screenshots for the portfolio case study.
 
@@ -29,11 +33,12 @@ and backend dependencies. GitHub Actions is the final validation source.
 
 ## Required Before Next Implementation
 
-Complete TASK-0602 and run the backend validation commands documented in
-`AGENTS.md`. If Python 3.12 is unavailable, use the documented Python 3.11
-fallback and state that the full local gate was not verified.
+Complete TASK-0603 local validation using the commands documented in
+`AGENTS.md` and the task instructions. If Python 3.12 is unavailable, use the
+documented Python 3.11 fallback and state that clearly.
 
-Then commit and push TASK-0602 and verify Backend CI for that pushed commit.
+After explicit user authorization, commit and push TASK-0603. Fresh Backend CI
+must pass for that pushed commit before TASK-0603 can be marked complete.
 
 ## Required Before Production
 

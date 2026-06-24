@@ -35,6 +35,7 @@ Some documents are retained for traceability and may not represent current imple
 - `docs/BI_EXPORT.md`: BI export dataset layer, table names, CSV behavior, and deferred dashboard boundaries.
 - `docs/POWER_BI_DASHBOARD.md`: Power BI dashboard specification that maps BI export tables to manual dashboard pages and visuals.
 - `docs/TABLEAU_DASHBOARD.md`: Tableau dashboard specification that maps BI export fixtures to manual workbook dashboards, worksheets, filters, calculated fields, and portfolio screenshots.
+- `docs/OUTREACH_EXPERT_REVIEW_CHECKLIST.md`: Mandatory manual outreach review gate after deterministic evaluation, with evidence checks and approve, revise, or reject decisions.
 - `data/sample_leads.csv`: Sample input data for import-related checks.
 - `data/bi_exports/*.csv`: Deterministic sample BI export fixtures for manual dashboard builds.
 
@@ -72,6 +73,7 @@ Some documents are retained for traceability and may not represent current imple
 - `backend/tests/test_bi_export_service.py`: BI export dataset and CSV behavior.
 - `backend/tests/test_power_bi_dashboard_docs.py`: Power BI dashboard documentation and sample fixture coverage.
 - `backend/tests/test_tableau_dashboard_docs.py`: Tableau dashboard documentation, fixture, workbook-deferral, and context-index coverage.
+- `backend/tests/test_outreach_expert_review_checklist.py`: File-based coverage for the expert review checklist, evaluator thresholds, supported channels, safety controls, and context-index references.
 
 ## Release / Review / Validation Context
 

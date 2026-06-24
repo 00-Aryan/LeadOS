@@ -4,10 +4,10 @@
 
 - Current branch: `phase-0-product-foundation`
 - Current PR: `#1`
-- Latest known CI state: user-provided task handoff records Backend CI passed on PR #1 at commit `362fd8018dce531fe8fdd0d8b8fb8f40d28a4b0b` in run #100; this environment could not re-query GitHub Actions.
+- Latest known CI state: user-provided task handoff records Backend CI passed on PR #1 at commit `4bfb6300bc68c7babc750f74d9142690225454f9` in run #104; this environment did not independently re-query GitHub Actions.
 - Sprint 1 status: complete for TASK-0105 gate.
 - Sprint 2 status: complete for TASK-0105 gate; migrations/reporting remain deferred.
-- Next blockers: TASK-0502 commit/push and fresh Backend CI, migrations, deferred evaluator implementation
+- Next blockers: TASK-0603 commit/push and fresh Backend CI, migrations, and deferred outbound capabilities
 - Local backend tests may still fail to run on machines without Python 3.12/dependencies, but GitHub Actions is the current source of truth for PR validation.
 
 Do not claim CI passes unless the relevant GitHub Actions run has been verified.
@@ -96,3 +96,11 @@ failure reasons, bad lines, and pass-or-review decisions. Evaluation uses
 explicit supported facts and does not rewrite, persist, route, or send drafts.
 No LLM integration, external API, migration, route, frontend, integration, or
 new dependency was added.
+
+## TASK-0603 Expert Outreach Review Checklist
+
+Added a mandatory manual review checklist and deterministic file-based
+documentation test. The checklist converts outreach and evaluator rules into
+evidence checks, channel checks, escalation rules, and `approve`, `revise`, or
+`reject` decisions without sending, persistence, evaluator changes, or
+automatic rewriting.
