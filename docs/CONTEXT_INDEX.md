@@ -27,6 +27,7 @@ Some documents are retained for traceability and may not represent current imple
 - `docs/WORKFLOW.md`: Standard planning, implementation, validation, failure, and reporting loop.
 - `docs/DONE_CRITERIA.md`: Completion gate for any task.
 - `docs/DECISIONS.md`: Architecture decision records that constrain future changes.
+- `docs/PHASE_0_COMPLETION_REPORT.md`: Evidence-based Phase 0 scope, validation, risk, deferred-work, and merge-readiness record.
 
 ## Data Context
 
@@ -77,6 +78,7 @@ Some documents are retained for traceability and may not represent current imple
 - `backend/tests/test_tableau_dashboard_docs.py`: Tableau dashboard documentation, fixture, workbook-deferral, and context-index coverage.
 - `backend/tests/test_outreach_expert_review_checklist.py`: File-based coverage for the expert review checklist, evaluator thresholds, supported channels, safety controls, and context-index references.
 - `backend/tests/test_sample_outreach_set.py`: Reproduction and safety coverage for the six fictional sample outreach cases without database, network, TestClient, or external services.
+- `backend/tests/test_phase_0_completion_docs.py`: File-based coverage for the Phase 0 completion report, verified baseline, MVP criteria, deferred scope, merge decision, and sign-off block.
 
 ## Release / Review / Validation Context
 

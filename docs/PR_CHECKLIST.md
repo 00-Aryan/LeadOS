@@ -12,9 +12,24 @@ This checklist applies to PR #1 and future LeadOS PRs unless a task explicitly d
 
 - PR: #1
 - Branch: `phase-0-product-foundation`
-- Latest verified head commit: `64f116cc77758de2e3e51792fe4b898cda2dd9e1`
-- Latest verified CI run: Backend CI success, run #76 / `27574177028`
-- Current merge posture: Latest verified CI matches current local `HEAD`, but the worktree has uncommitted changes. The PR requires normal review, a current PR description, and re-verification if any newer commit is pushed.
+- Latest verified head commit: `7012d052e37e12b458420e38e03f80e011faf1b2`
+- Latest verified CI run: Backend CI success, run #108
+- Current merge posture: The verified baseline matches the local and GitHub PR
+  head. Phase 0 implementation criteria pass, but the closeout commit still
+  requires push, fresh Backend CI, and final human review before merge.
+
+## Phase 0 Closeout Checklist
+
+- [x] Verified baseline commit matches the local and GitHub PR head.
+- [x] Backend CI run #108 passed for the verified baseline.
+- [x] Phase 0 implementation criteria are mapped to concrete source and tests.
+- [x] Deferred production and integration work is explicit.
+- [ ] `docs/PHASE_0_COMPLETION_REPORT.md` is committed and pushed.
+- [ ] Completion documentation tests pass in fresh Backend CI.
+- [x] PR #1 title/body reflects the complete Phase 0 scope.
+- [ ] Final PR diff has been manually reviewed.
+- [ ] Branch protection and required checks are satisfied.
+- [x] No automatic merge was performed by this closeout task.
 
 ## Required Before Marking Ready
 

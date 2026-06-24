@@ -2,17 +2,13 @@
 
 ## Required Now
 
-The TASK-0503 sample cases are entirely fictional and exist only for
-validation and portfolio demonstration. They are not real prospects and must
-not be treated as an outreach queue.
+Review the Phase 0 closeout diff and completion report. After explicit user
+authorization, commit and push the closeout changes, then verify fresh Backend
+CI and perform final human review of PR #1.
 
-No automatic sending is permitted. `approve` means only that a human may
-consider sending a separately verified draft. `revise` cases require
-re-evaluation before another manual review. `reject` cases must not be used.
-
-As of TASK-0503 start, the user-provided task handoff records Backend CI
-passing at commit `0fd9c69581865a864bf6a657f683bd5083b39888`
-in run #106.
+The verified baseline is commit
+`7012d052e37e12b458420e38e03f80e011faf1b2`; user-provided Backend CI run
+#108 passed, and GitHub PR inspection confirmed that commit as the PR head.
 
 For current task sequencing and blockers, use `docs/ACTIVE_TASKS.md`.
 
@@ -29,19 +25,22 @@ No automatic outbound sending is permitted.
 
 ## Required Before Merge
 
-GitHub Actions Backend CI must be green for the latest PR head commit.
+- Review the final PR diff.
+- Confirm branch protection and required checks.
+- Confirm no secrets or local artifacts are present.
+- Confirm the updated PR title/body still reflects the final committed scope.
+- Confirm fresh Backend CI is green for the closeout commit.
+- Merge manually only after final human review.
+- Delete or retain the branch according to repository policy.
 
-Local backend validation may remain blocked on machines without Python 3.12
-and backend dependencies. GitHub Actions is the final validation source.
+No automatic merge is permitted.
 
 ## Required Before Next Implementation
 
-Complete TASK-0503 local validation using the commands documented in
-`AGENTS.md` and the task instructions. If Python 3.12 is unavailable, use the
-documented Python 3.11 fallback and state that clearly.
-
-After explicit user authorization, commit and push TASK-0503. Fresh Backend CI
-must pass for that pushed commit before TASK-0503 can be marked complete.
+Complete TASK-PHASE0-CLOSEOUT validation using the commands documented in
+`AGENTS.md` and the task instructions. If the existing Python 3.11 TestClient
+timeout occurs, record it, run the complete non-TestClient suite, and use
+fresh GitHub Actions as the final gate.
 
 ## Required Before Production
 
